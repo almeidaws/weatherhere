@@ -12,13 +12,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let window = UIWindow()
-        let controller = LocalWeatherViewController()
-        window.rootViewController = controller
-        window.makeKeyAndVisible()
-        self.window = window
+        guard let winScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: winScene)
+        let homeController = LocalWeatherViewController()
+        window?.rootViewController = homeController
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -3,18 +3,26 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB02E609AB4B70182AE3E756 /* Pods_UserInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057D5C9CCA236CBA225E0C31 /* Pods_UserInterface.framework */; };
+		ECB3F44F2468821800431CA9 /* UIFont+italicSystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB3F44E2468821800431CA9 /* UIFont+italicSystemFont.swift */; };
 		ECFC68C22468747E0060C8AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFC68C12468747E0060C8AF /* AppDelegate.swift */; };
 		ECFC68C42468747E0060C8AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFC68C32468747E0060C8AF /* SceneDelegate.swift */; };
 		ECFC68CB246874830060C8AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECFC68CA246874830060C8AF /* Assets.xcassets */; };
 		ECFC68CE246874830060C8AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECFC68CC246874830060C8AF /* LaunchScreen.storyboard */; };
 		ECFC68DB246875810060C8AF /* LocalWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFC68DA246875810060C8AF /* LocalWeatherViewController.swift */; };
+		ECFC68DD246878DC0060C8AF /* LocalWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFC68DC246878DC0060C8AF /* LocalWeatherView.swift */; };
+		ECFC68E0246879750060C8AF /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFC68DF246879750060C8AF /* Drawable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		057D5C9CCA236CBA225E0C31 /* Pods_UserInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UserInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41D8E6072820BF75E99BADA4 /* Pods-UserInterface.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserInterface.debug.xcconfig"; path = "Target Support Files/Pods-UserInterface/Pods-UserInterface.debug.xcconfig"; sourceTree = "<group>"; };
+		90D8120E78464245841D64BA /* Pods-UserInterface.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserInterface.release.xcconfig"; path = "Target Support Files/Pods-UserInterface/Pods-UserInterface.release.xcconfig"; sourceTree = "<group>"; };
+		ECB3F44E2468821800431CA9 /* UIFont+italicSystemFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+italicSystemFont.swift"; sourceTree = "<group>"; };
 		ECFC68BE2468747E0060C8AF /* Weather Here.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Here.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECFC68C12468747E0060C8AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECFC68C32468747E0060C8AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -22,6 +30,8 @@
 		ECFC68CD246874830060C8AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECFC68CF246874830060C8AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECFC68DA246875810060C8AF /* LocalWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalWeatherViewController.swift; sourceTree = "<group>"; };
+		ECFC68DC246878DC0060C8AF /* LocalWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalWeatherView.swift; sourceTree = "<group>"; };
+		ECFC68DF246879750060C8AF /* Drawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +39,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB02E609AB4B70182AE3E756 /* Pods_UserInterface.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		59D3B6B7F74D4925F40EB91F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				41D8E6072820BF75E99BADA4 /* Pods-UserInterface.debug.xcconfig */,
+				90D8120E78464245841D64BA /* Pods-UserInterface.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		ECB3F44D246881FD00431CA9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ECB3F44E2468821800431CA9 /* UIFont+italicSystemFont.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		ECFC68B52468747E0060C8AF = {
 			isa = PBXGroup;
 			children = (
 				ECFC68C02468747E0060C8AF /* UserInterface */,
 				ECFC68BF2468747E0060C8AF /* Products */,
+				59D3B6B7F74D4925F40EB91F /* Pods */,
+				EFCECF40FCECDBCCF72001EB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +85,7 @@
 		ECFC68C02468747E0060C8AF /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
+				ECFC68DE246879660060C8AF /* Supporting */,
 				ECFC68D82468754D0060C8AF /* Screens */,
 				ECFC68D7246875400060C8AF /* Resources */,
 				ECFC68D6246875200060C8AF /* Misc */,
@@ -100,8 +132,26 @@
 			isa = PBXGroup;
 			children = (
 				ECFC68DA246875810060C8AF /* LocalWeatherViewController.swift */,
+				ECFC68DC246878DC0060C8AF /* LocalWeatherView.swift */,
 			);
 			name = LocalWeather;
+			sourceTree = "<group>";
+		};
+		ECFC68DE246879660060C8AF /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				ECB3F44D246881FD00431CA9 /* Extensions */,
+				ECFC68DF246879750060C8AF /* Drawable.swift */,
+			);
+			name = Supporting;
+			sourceTree = "<group>";
+		};
+		EFCECF40FCECDBCCF72001EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				057D5C9CCA236CBA225E0C31 /* Pods_UserInterface.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -111,9 +161,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ECFC68D2246874830060C8AF /* Build configuration list for PBXNativeTarget "UserInterface" */;
 			buildPhases = (
+				DCFB8B9D1E8752EAC65A56CB /* [CP] Check Pods Manifest.lock */,
 				ECFC68BA2468747E0060C8AF /* Sources */,
 				ECFC68BB2468747E0060C8AF /* Frameworks */,
 				ECFC68BC2468747E0060C8AF /* Resources */,
+				0428E4CFEA277BBCAEF9E543 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -169,6 +221,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0428E4CFEA277BBCAEF9E543 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UserInterface/Pods-UserInterface-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UserInterface/Pods-UserInterface-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UserInterface/Pods-UserInterface-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DCFB8B9D1E8752EAC65A56CB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UserInterface-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ECFC68BA2468747E0060C8AF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -177,6 +271,9 @@
 				ECFC68C22468747E0060C8AF /* AppDelegate.swift in Sources */,
 				ECFC68C42468747E0060C8AF /* SceneDelegate.swift in Sources */,
 				ECFC68DB246875810060C8AF /* LocalWeatherViewController.swift in Sources */,
+				ECFC68DD246878DC0060C8AF /* LocalWeatherView.swift in Sources */,
+				ECB3F44F2468821800431CA9 /* UIFont+italicSystemFont.swift in Sources */,
+				ECFC68E0246879750060C8AF /* Drawable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +407,7 @@
 		};
 		ECFC68D3246874830060C8AF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41D8E6072820BF75E99BADA4 /* Pods-UserInterface.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -329,6 +427,7 @@
 		};
 		ECFC68D4246874830060C8AF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90D8120E78464245841D64BA /* Pods-UserInterface.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -10,21 +10,18 @@ import UIKit
 
 class LocalWeatherViewController: UIViewController {
 
+    private let localWeatherView = LocalWeatherView()
+    override func loadView() { view = localWeatherView }
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        localWeatherView.draw()
+        localWeatherView.model = .init(temperature: "34 °C", location: "Brasília - DF", appearance: .hot)
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
+            DispatchQueue.main.async { [weak self] in
+                self?.localWeatherView.model = .init(temperature: "34 °C", location: "Brasília - DF", appearance: .cold)
+            }
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
