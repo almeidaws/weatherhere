@@ -18,6 +18,8 @@ class LocalWeatherView: UIView, Drawable {
     private weak var scrollViewContainer: UIView!
     private weak var background: UIImageView!
     
+    var isDrawn: Bool { return temperature != nil }
+    
     var model: Model? {
         didSet {
             guard let model = model else { return }

@@ -9,6 +9,7 @@
 import Foundation
 
 protocol Drawable {
+    var isDrawn: Bool { get }
     func makeConstraints()
     func stylizeViews()
     func createViewsHierarchy()
@@ -20,6 +21,8 @@ extension Drawable {
         stylizeViews()
         makeConstraints()
     }
+    
+    func drawIfNeeded() { if !isDrawn { draw() } }
     
     func makeConstraints() { }
     func stylizeViews() { }

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		AB02E609AB4B70182AE3E756 /* Pods_UserInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057D5C9CCA236CBA225E0C31 /* Pods_UserInterface.framework */; };
+		EC09574B2468BBC500413BD0 /* NearbyWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC09574A2468BBC500413BD0 /* NearbyWeatherViewController.swift */; };
+		EC09574D2468BBE600413BD0 /* NearbyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC09574C2468BBE600413BD0 /* NearbyWeatherView.swift */; };
+		EC09574F2468BE2300413BD0 /* UIFont+boldSystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC09574E2468BE2300413BD0 /* UIFont+boldSystemFont.swift */; };
 		ECB3F44F2468821800431CA9 /* UIFont+italicSystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB3F44E2468821800431CA9 /* UIFont+italicSystemFont.swift */; };
 		ECFC68C22468747E0060C8AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFC68C12468747E0060C8AF /* AppDelegate.swift */; };
 		ECFC68C42468747E0060C8AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFC68C32468747E0060C8AF /* SceneDelegate.swift */; };
@@ -22,6 +25,9 @@
 		057D5C9CCA236CBA225E0C31 /* Pods_UserInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UserInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41D8E6072820BF75E99BADA4 /* Pods-UserInterface.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserInterface.debug.xcconfig"; path = "Target Support Files/Pods-UserInterface/Pods-UserInterface.debug.xcconfig"; sourceTree = "<group>"; };
 		90D8120E78464245841D64BA /* Pods-UserInterface.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserInterface.release.xcconfig"; path = "Target Support Files/Pods-UserInterface/Pods-UserInterface.release.xcconfig"; sourceTree = "<group>"; };
+		EC09574A2468BBC500413BD0 /* NearbyWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyWeatherViewController.swift; sourceTree = "<group>"; };
+		EC09574C2468BBE600413BD0 /* NearbyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyWeatherView.swift; sourceTree = "<group>"; };
+		EC09574E2468BE2300413BD0 /* UIFont+boldSystemFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+boldSystemFont.swift"; sourceTree = "<group>"; };
 		ECB3F44E2468821800431CA9 /* UIFont+italicSystemFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+italicSystemFont.swift"; sourceTree = "<group>"; };
 		ECFC68BE2468747E0060C8AF /* Weather Here.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Here.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECFC68C12468747E0060C8AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,10 +62,20 @@
 			path = ../Pods;
 			sourceTree = "<group>";
 		};
+		EC0957492468BB9B00413BD0 /* Nearby Weather */ = {
+			isa = PBXGroup;
+			children = (
+				EC09574A2468BBC500413BD0 /* NearbyWeatherViewController.swift */,
+				EC09574C2468BBE600413BD0 /* NearbyWeatherView.swift */,
+			);
+			name = "Nearby Weather";
+			sourceTree = "<group>";
+		};
 		ECB3F44D246881FD00431CA9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				ECB3F44E2468821800431CA9 /* UIFont+italicSystemFont.swift */,
+				EC09574E2468BE2300413BD0 /* UIFont+boldSystemFont.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -123,18 +139,19 @@
 		ECFC68D82468754D0060C8AF /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				ECFC68D9246875560060C8AF /* LocalWeather */,
+				EC0957492468BB9B00413BD0 /* Nearby Weather */,
+				ECFC68D9246875560060C8AF /* Local Weather */,
 			);
 			name = Screens;
 			sourceTree = "<group>";
 		};
-		ECFC68D9246875560060C8AF /* LocalWeather */ = {
+		ECFC68D9246875560060C8AF /* Local Weather */ = {
 			isa = PBXGroup;
 			children = (
 				ECFC68DA246875810060C8AF /* LocalWeatherViewController.swift */,
 				ECFC68DC246878DC0060C8AF /* LocalWeatherView.swift */,
 			);
-			name = LocalWeather;
+			name = "Local Weather";
 			sourceTree = "<group>";
 		};
 		ECFC68DE246879660060C8AF /* Supporting */ = {
@@ -270,9 +287,12 @@
 			files = (
 				ECFC68C22468747E0060C8AF /* AppDelegate.swift in Sources */,
 				ECFC68C42468747E0060C8AF /* SceneDelegate.swift in Sources */,
+				EC09574F2468BE2300413BD0 /* UIFont+boldSystemFont.swift in Sources */,
+				EC09574B2468BBC500413BD0 /* NearbyWeatherViewController.swift in Sources */,
 				ECFC68DB246875810060C8AF /* LocalWeatherViewController.swift in Sources */,
 				ECFC68DD246878DC0060C8AF /* LocalWeatherView.swift in Sources */,
 				ECB3F44F2468821800431CA9 /* UIFont+italicSystemFont.swift in Sources */,
+				EC09574D2468BBE600413BD0 /* NearbyWeatherView.swift in Sources */,
 				ECFC68E0246879750060C8AF /* Drawable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
