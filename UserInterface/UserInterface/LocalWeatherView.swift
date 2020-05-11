@@ -19,7 +19,7 @@ class LocalWeatherView: UIView, Drawable {
     private weak var background: UIImageView!
     
     var isDrawn: Bool { return temperature != nil }
-    
+    weak var delegate: LocalWeatherViewDelegate?
     var model: Model? {
         didSet {
             guard let model = model else { return }
@@ -114,7 +114,12 @@ class LocalWeatherView: UIView, Drawable {
         let seeNearby = UIButton()
         seeNearby.setTitle("See Nearby", for: .normal)
         self.seeNearby = seeNearby
+        seeNearby.addTarget(self, action: #selector(handleSeeNearby(_:)), for: .touchUpInside)
         addSubview(seeNearby)
+    }
+    
+    @objc private func handleSeeNearby(_ sender: UIButton) {
+        delegate?.view(self, didTouch: .seeNearby)
     }
 
     struct Model {
@@ -134,4 +139,12 @@ class LocalWeatherView: UIView, Drawable {
             }
         }
     }
+     
+    enum Button: Int {
+        case seeNearby
+    }
+}
+
+protocol LocalWeatherViewDelegate: AnyObject {
+    func view(_ view: LocalWeatherView, didTouch button: LocalWeatherView.Button)
 }

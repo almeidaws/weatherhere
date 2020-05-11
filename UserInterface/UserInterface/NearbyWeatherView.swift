@@ -29,6 +29,7 @@ class NearbyWeatherView: UIView, Drawable {
     func stylizeViews() {
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
+        tableView.allowsSelection = false
         background.image = #imageLiteral(resourceName: "Purple Background.png")
         background.contentMode = .scaleAspectFill
     }
