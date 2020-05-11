@@ -1,0 +1,118 @@
+{
+    "message": "accurate",
+    "cod": "200",
+    "count": 20,
+    "list": [
+        {
+            "id": 3469058,
+            "name": "Brasilia",
+            "coord": {
+                "lat": -15.78,
+                "lon": -47.93
+            },
+            "main": {
+                "temp": 293.15,
+                "feels_like": 290,
+                "temp_min": 293.15,
+                "temp_max": 293.15,
+                "pressure": 1024,
+                "humidity": 72
+            },
+            "dt": 1589202884,
+            "wind": {
+                "speed": 6.7,
+                "deg": 70
+            },
+            "sys": {
+                "country": "BR"
+            },
+            "rain": null,
+            "snow": null,
+            "clouds": {
+                "all": 0
+            },
+            "weather": [
+                {
+                    "id": 800,
+                    "main": "Clear",
+                    "description": "clear sky",
+                    "icon": "01d"
+                }
+            ]
+        },
+        {
+            "id": 3461936,
+            "name": "Guará",
+            "coord": {
+                "lat": -15.83,
+                "lon": -47.9
+            },
+            "main": {
+                "temp": 293.15,
+                "feels_like": 290,
+                "temp_min": 293.15,
+                "temp_max": 293.15,
+                "pressure": 1024,
+                "humidity": 72
+            },
+            "dt": 1589202883,
+            "wind": {
+                "speed": 6.7,
+                "deg": 70
+            },
+            "sys": {
+                "country": "BR"
+            },
+            "rain": null,
+            "snow": null,
+            "clouds": {
+                "all": 0
+            },
+            "weather": [
+                {
+                    "id": 800,
+                    "main": "Clear",
+                    "description": "clear sky",
+                    "icon": "01d"
+                }
+            ]
+        },
+        {
+            "id": 3462672,
+            "name": "Gama",
+            "coord": {
+                "lat": -15.95,
+                "lon": -48.08
+            },
+            "main": {
+                "temp": 293.15,
+                "feels_like": 290,
+                "temp_min": 293.15,
+                "temp_max": 293.15,
+                "pressure": 1024,
+                "humidity": 72
+            },
+            "dt": 1589202884,
+            "wind": {
+                "speed": 6.7,
+                "deg": 70
+            },
+            "sys": {
+                "country": "BR"
+            },
+            "rain": null,
+            "snow": null,
+            "clouds": {
+                "all": 0
+            },
+            "weather": [
+                {
+                    "id": 800,
+                    "main": "Clear",
+                    "description": "clear sky",
+                    "icon": "01d"
+                }
+            ]
+        }
+    ]
+}

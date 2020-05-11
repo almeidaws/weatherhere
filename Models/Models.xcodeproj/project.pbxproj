@@ -9,13 +9,32 @@
 /* Begin PBXBuildFile section */
 		EC0957AD246955B900413BD0 /* Models.h in Headers */ = {isa = PBXBuildFile; fileRef = EC0957AB246955B900413BD0 /* Models.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EC0957B6246955D700413BD0 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0957B5246955D700413BD0 /* Location.swift */; };
+		EC0957FD2469903000413BD0 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0957FC2469903000413BD0 /* Weather.swift */; };
+		EC09581724699BD600413BD0 /* DistanceMeasureable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC09581624699BD600413BD0 /* DistanceMeasureable.swift */; };
+		EC09581F2469B66D00413BD0 /* ModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC09581E2469B66D00413BD0 /* ModelsTests.swift */; };
+		EC0958212469B66D00413BD0 /* Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0957A8246955B900413BD0 /* Models.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EC0958222469B66D00413BD0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC09579F246955B900413BD0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC0957A7246955B900413BD0;
+			remoteInfo = Models;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		EC0957A8246955B900413BD0 /* Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC0957AB246955B900413BD0 /* Models.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Models.h; sourceTree = "<group>"; };
 		EC0957AC246955B900413BD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC0957B5246955D700413BD0 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		EC0957FC2469903000413BD0 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = SOURCE_ROOT; };
+		EC09581624699BD600413BD0 /* DistanceMeasureable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureable.swift; sourceTree = "<group>"; };
+		EC09581C2469B66D00413BD0 /* ModelsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC09581E2469B66D00413BD0 /* ModelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsTests.swift; sourceTree = "<group>"; };
+		EC0958202469B66D00413BD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +45,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EC0958192469B66D00413BD0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC0958212469B66D00413BD0 /* Models.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				EC0957AA246955B900413BD0 /* Models */,
+				EC09581D2469B66D00413BD0 /* ModelsTests */,
 				EC0957A9246955B900413BD0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				EC0957A8246955B900413BD0 /* Models.framework */,
+				EC09581C2469B66D00413BD0 /* ModelsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,7 +77,9 @@
 		EC0957AA246955B900413BD0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EC09581624699BD600413BD0 /* DistanceMeasureable.swift */,
 				EC0957B5246955D700413BD0 /* Location.swift */,
+				EC0957FC2469903000413BD0 /* Weather.swift */,
 				EC0957B4246955C400413BD0 /* Metadata */,
 			);
 			path = Models;
@@ -59,6 +90,23 @@
 			children = (
 				EC0957AB246955B900413BD0 /* Models.h */,
 				EC0957AC246955B900413BD0 /* Info.plist */,
+			);
+			name = Metadata;
+			sourceTree = "<group>";
+		};
+		EC09581D2469B66D00413BD0 /* ModelsTests */ = {
+			isa = PBXGroup;
+			children = (
+				EC09581E2469B66D00413BD0 /* ModelsTests.swift */,
+				EC0958272469B67900413BD0 /* Metadata */,
+			);
+			path = ModelsTests;
+			sourceTree = "<group>";
+		};
+		EC0958272469B67900413BD0 /* Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				EC0958202469B66D00413BD0 /* Info.plist */,
 			);
 			name = Metadata;
 			sourceTree = "<group>";
@@ -95,18 +143,40 @@
 			productReference = EC0957A8246955B900413BD0 /* Models.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		EC09581B2469B66D00413BD0 /* ModelsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC0958242469B66D00413BD0 /* Build configuration list for PBXNativeTarget "ModelsTests" */;
+			buildPhases = (
+				EC0958182469B66D00413BD0 /* Sources */,
+				EC0958192469B66D00413BD0 /* Frameworks */,
+				EC09581A2469B66D00413BD0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC0958232469B66D00413BD0 /* PBXTargetDependency */,
+			);
+			name = ModelsTests;
+			productName = ModelsTests;
+			productReference = EC09581C2469B66D00413BD0 /* ModelsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		EC09579F246955B900413BD0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Gustavo Almeida Amaral";
 				TargetAttributes = {
 					EC0957A7246955B900413BD0 = {
 						CreatedOnToolsVersion = 11.4.1;
 						LastSwiftMigration = 1140;
+					};
+					EC09581B2469B66D00413BD0 = {
+						CreatedOnToolsVersion = 11.4.1;
 					};
 				};
 			};
@@ -124,12 +194,20 @@
 			projectRoot = "";
 			targets = (
 				EC0957A7246955B900413BD0 /* Models */,
+				EC09581B2469B66D00413BD0 /* ModelsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EC0957A6246955B900413BD0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC09581A2469B66D00413BD0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -143,11 +221,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC0957FD2469903000413BD0 /* Weather.swift in Sources */,
+				EC09581724699BD600413BD0 /* DistanceMeasureable.swift in Sources */,
 				EC0957B6246955D700413BD0 /* Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EC0958182469B66D00413BD0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC09581F2469B66D00413BD0 /* ModelsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EC0958232469B66D00413BD0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC0957A7246955B900413BD0 /* Models */;
+			targetProxy = EC0958222469B66D00413BD0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		EC0957AE246955B900413BD0 /* Debug */ = {
@@ -323,6 +419,44 @@
 			};
 			name = Release;
 		};
+		EC0958252469B66D00413BD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4EQ948BHF9;
+				INFOPLIST_FILE = ModelsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.almeidaws.WeatherHere.ModelsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EC0958262469B66D00413BD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4EQ948BHF9;
+				INFOPLIST_FILE = ModelsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.almeidaws.WeatherHere.ModelsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -340,6 +474,15 @@
 			buildConfigurations = (
 				EC0957B1246955B900413BD0 /* Debug */,
 				EC0957B2246955B900413BD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC0958242469B66D00413BD0 /* Build configuration list for PBXNativeTarget "ModelsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC0958252469B66D00413BD0 /* Debug */,
+				EC0958262469B66D00413BD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

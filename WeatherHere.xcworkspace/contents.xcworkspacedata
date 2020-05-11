@@ -2,16 +2,19 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Models/Models.xcodeproj">
+      location = "group:UserInterface/UserInterface.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:GPS/GPS.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Services/Services.xcodeproj">
+      location = "group:Networking/Networking.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:UserInterface/UserInterface.xcodeproj">
+      location = "group:Models/Models.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Services/Services.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

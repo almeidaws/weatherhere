@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ECFC68BD2468747E0060C8AF"
-               BuildableName = "Weather Here.app"
-               BlueprintName = "UserInterface"
-               ReferencedContainer = "container:UserInterface.xcodeproj">
+               BlueprintIdentifier = "EC0957A7246955B900413BD0"
+               BuildableName = "Models.framework"
+               BlueprintName = "Models"
+               ReferencedContainer = "container:Models.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,30 +32,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EC09576B2468C7AF00413BD0"
-               BuildableName = "ServicesTests.xctest"
-               BlueprintName = "ServicesTests"
-               ReferencedContainer = "container:../Services/Services.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EC0957D124697E1100413BD0"
-               BuildableName = "NetworkingTests.xctest"
-               BlueprintName = "NetworkingTests"
-               ReferencedContainer = "container:../Networking/Networking.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "EC09581B2469B66D00413BD0"
                BuildableName = "ModelsTests.xctest"
                BlueprintName = "ModelsTests"
-               ReferencedContainer = "container:../Models/Models.xcodeproj">
+               ReferencedContainer = "container:Models.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -70,16 +50,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ECFC68BD2468747E0060C8AF"
-            BuildableName = "Weather Here.app"
-            BlueprintName = "UserInterface"
-            ReferencedContainer = "container:UserInterface.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -87,16 +57,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ECFC68BD2468747E0060C8AF"
-            BuildableName = "Weather Here.app"
-            BlueprintName = "UserInterface"
-            ReferencedContainer = "container:UserInterface.xcodeproj">
+            BlueprintIdentifier = "EC0957A7246955B900413BD0"
+            BuildableName = "Models.framework"
+            BlueprintName = "Models"
+            ReferencedContainer = "container:Models.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
