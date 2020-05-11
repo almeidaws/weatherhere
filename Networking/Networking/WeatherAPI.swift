@@ -28,7 +28,7 @@ public enum WeatherAPI {
         }
         
         struct Weather: Decodable, Hashable {
-            let main: String
+            let description: String
         }
     }
     
@@ -47,7 +47,7 @@ public enum WeatherAPI {
             }
             
             struct Weather: Decodable, Hashable {
-                let main: String
+                let description: String
             }
             
             struct Main: Decodable, Hashable {
@@ -55,18 +55,24 @@ public enum WeatherAPI {
             }
         }
     }
+    
+    public enum Language: String {
+        case en
+        case pt_br
+    }
 }
 
 extension Requester {
-    public func weather(at location: Location, _ bundle: Bundle = .main) -> AnyPublisher<Weather, RequestError> {
+    public func weather(at location: Location, _ language: WeatherAPI.Language, _ bundle: Bundle = .main) -> AnyPublisher<Weather, RequestError> {
         let parameters = [
             "appid": Endpoint.apiKey(bundle),
             "lat": "\(location.latitude)",
-            "lon": "\(location.longitude)"
+            "lon": "\(location.longitude)",
+            "lang": language.rawValue
         ]
         return get(from: .weather(bundle), queryParameters: parameters, decoder: JSONDecoder())
             .map { (decodedResponse: RequestDecodedResponse<WeatherAPI.WeatherResponse>) -> Weather in
-                let sky = decodedResponse.data.weather.first?.main ?? "Unknown"
+                let sky = decodedResponse.data.weather.first?.description ?? "Unknown"
                 return Weather(
                     place: decodedResponse.data.name,
                     location: .init(latitude: decodedResponse.data.coord.lat, longitude: decodedResponse.data.coord.lon),
@@ -85,7 +91,7 @@ extension Requester {
         return get(from: .weather(bundle), queryParameters: parameters, decoder: JSONDecoder())
             .map { (decodedResponse: RequestDecodedResponse<WeatherAPI.FindResponse>) -> [Weather] in
                 return decodedResponse.data.list.map { item in
-                    let sky = item.weather.first?.main ?? "Unknown"
+                    let sky = item.weather.first?.description ?? "Unknown"
                     return Weather(
                         place: item.name,
                         location: .init(latitude: item.coord.lat, longitude: item.coord.lon),
