@@ -8,6 +8,8 @@
 
 import UIKit
 import Services
+import GPS
+import Combine
 
 class LocalWeatherViewController: UIViewController {
 
@@ -15,17 +17,43 @@ class LocalWeatherViewController: UIViewController {
     override func loadView() { view = localWeatherView }
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     private let coordinator: Coordinator<LocalWeatherView.Button> = Services.make(for: LocalWeatherViewController.self)
+    private let gps: GPS = Services.make(for: NearbyWeatherViewController.self)
+    private var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         localWeatherView.draw()
         localWeatherView.model = .init(temperature: "34 °C", location: "Brasília - DF", appearance: .hot)
         localWeatherView.delegate = self
+        handleGPSUpdates()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        gps.start()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        gps.stop()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        cancellables.removeAll()
+    }
+    
+    private func handleGPSUpdates() {
+        gps.publisher.sink(receiveCompletion: { completion in
+            print(completion)
+        }) { (location) in
+            print(location)
+        }.store(in: &cancellables)
     }
 }
 

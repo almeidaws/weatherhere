@@ -8,6 +8,7 @@
 
 import UIKit
 import Services
+import GPS
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func registerServices() {
         Services.register(LocalWeatherViewController.self) { LocalToNearbyWeatherCoordinator() }
+        Services.register(NearbyWeatherViewController.self) { CoreLocationGPS() }
     }
 
 

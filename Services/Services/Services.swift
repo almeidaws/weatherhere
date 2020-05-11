@@ -13,13 +13,13 @@ public protocol Service { }
 public class Services {
     
     public static let `default` = Services()
-    private var registers = [ObjectIdentifier : () -> Service]()
+    private var registers = [ObjectIdentifier : () -> Any]()
     
     public func register<S, I>(_ service: S.Type, maker: @escaping () -> I) where I: Service {
         registers[ObjectIdentifier(service)] = maker
     }
     
-    public func make<S, I>(for service: S.Type) -> I where I: Service {
+    public func make<S, I>(for service: S.Type) -> I {
         let id = ObjectIdentifier(service)
         guard let maker = registers[id] else {
             fatalError("Service '\(service)' wasn't previously registered")
@@ -36,8 +36,7 @@ public extension Services {
         Services.default.register(service, maker: maker)
     }
     
-    static func make<S, I>(for service: S.Type) -> I where I: Service {
+    static func make<S, I>(for service: S.Type) -> I {
         return Services.default.make(for: service)
     }
 }
-

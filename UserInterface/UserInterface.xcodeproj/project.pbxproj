@@ -16,6 +16,8 @@
 		EC09577D2468C85B00413BD0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC09577C2468C85B00413BD0 /* Coordinator.swift */; };
 		EC09577F2468C9D300413BD0 /* LocalToNearbyWeatherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC09577E2468C9D300413BD0 /* LocalToNearbyWeatherCoordinator.swift */; };
 		EC0957832468DD1900413BD0 /* LighStatusBarNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0957822468DD1900413BD0 /* LighStatusBarNavigationController.swift */; };
+		EC0957BD246963FB00413BD0 /* GPS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0957BC246963FB00413BD0 /* GPS.framework */; };
+		EC0957BE246963FB00413BD0 /* GPS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC0957BC246963FB00413BD0 /* GPS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECB3F44F2468821800431CA9 /* UIFont+italicSystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB3F44E2468821800431CA9 /* UIFont+italicSystemFont.swift */; };
 		ECFC68C22468747E0060C8AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFC68C12468747E0060C8AF /* AppDelegate.swift */; };
 		ECFC68C42468747E0060C8AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFC68C32468747E0060C8AF /* SceneDelegate.swift */; };
@@ -34,6 +36,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				EC0957792468C84400413BD0 /* Services.framework in Embed Frameworks */,
+				EC0957BE246963FB00413BD0 /* GPS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,6 +54,7 @@
 		EC09577C2468C85B00413BD0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		EC09577E2468C9D300413BD0 /* LocalToNearbyWeatherCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalToNearbyWeatherCoordinator.swift; sourceTree = "<group>"; };
 		EC0957822468DD1900413BD0 /* LighStatusBarNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LighStatusBarNavigationController.swift; sourceTree = "<group>"; };
+		EC0957BC246963FB00413BD0 /* GPS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GPS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB3F44E2468821800431CA9 /* UIFont+italicSystemFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+italicSystemFont.swift"; sourceTree = "<group>"; };
 		ECFC68BE2468747E0060C8AF /* Weather Here.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Here.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECFC68C12468747E0060C8AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 			files = (
 				EC0957782468C84400413BD0 /* Services.framework in Frameworks */,
 				AB02E609AB4B70182AE3E756 /* Pods_UserInterface.framework in Frameworks */,
+				EC0957BD246963FB00413BD0 /* GPS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +206,7 @@
 		EFCECF40FCECDBCCF72001EB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EC0957BC246963FB00413BD0 /* GPS.framework */,
 				EC0957772468C84400413BD0 /* Services.framework */,
 				057D5C9CCA236CBA225E0C31 /* Pods_UserInterface.framework */,
 			);
