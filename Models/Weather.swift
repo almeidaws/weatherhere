@@ -22,18 +22,24 @@ public struct Weather: Codable, Hashable, Comparable {
     }
     
     public struct Temperature: Codable, Hashable, Comparable {
-        public let value: Double
+        public let celsiusValue: Double
+        public var localizedValue: String {
+            let formatter = MeasurementFormatter()
+            formatter.unitStyle = .short
+            formatter.unitOptions = .temperatureWithoutUnit
+            return formatter.string(from: Measurement(value: celsiusValue, unit: UnitTemperature.celsius))
+        }
         
         public init(celsius: Double) {
-            self.value = celsius
+            self.celsiusValue = celsius
         }
         
         public init(fahrenheit: Double) {
-            self.value = (fahrenheit - 32) * 5/9
+            self.celsiusValue = (fahrenheit - 32) * 5/9
         }
         
         public static func < (lhs: Weather.Temperature, rhs: Weather.Temperature) -> Bool {
-            return lhs.value < rhs.value
+            return lhs.celsiusValue < rhs.celsiusValue
         }
     }
     
