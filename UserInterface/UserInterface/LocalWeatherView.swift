@@ -18,7 +18,6 @@ class LocalWeatherView: UIView, Drawable {
     private weak var scrollViewContainer: UIView!
     private weak var background: UIImageView!
     private weak var activityIndicator: UIActivityIndicatorView!
-    private weak var retry: UIButton!
     
     var isDrawn: Bool { return temperature != nil }
     var isLoading: Bool {

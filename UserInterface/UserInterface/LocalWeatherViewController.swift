@@ -12,7 +12,7 @@ import GPS
 import Combine
 
 class LocalWeatherViewController: UIViewController {
-
+    
     private let localWeatherView = LocalWeatherView()
     override func loadView() { view = localWeatherView }
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
@@ -37,8 +37,8 @@ class LocalWeatherViewController: UIViewController {
         viewModel.startRetrievingWeather()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         viewModel.stopRetrievingWeather()
     }
     
@@ -54,7 +54,20 @@ class LocalWeatherViewController: UIViewController {
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
-                    self.alert(error)
+                    if
+                        case let .gps(error) = error,
+                        case let .authorizationDenied(flow) = error,
+                        case let .authorizeManually(at: url) = flow {
+                        if UIApplication.shared.canOpenURL(url) {
+                            self.alert(title:"Unable to fetch your current location", message: "Would you like to reactive it on settings?", no: { }, yes: {
+                                UIApplication.shared.open(url)
+                            })
+                        } else {
+                            self.alert(title: "We haven't access to your location.", message: "Please, give access to this app and retry.")
+                        }
+                    } else {
+                        self.alert(error) { self.startReceivingWeather() }
+                    }
                 case .finished:
                     self.localWeatherView.isLoading = false
                 }
@@ -62,8 +75,8 @@ class LocalWeatherViewController: UIViewController {
                 self.localWeatherView.isLoading = false
                 self.localWeatherView.model = .init(temperature: weather.temperature.localizedValue,
                                                     location: "\(weather.city) - \(weather.country)",
-                                                    appearance: weather.temperature.feelsLike == .hot ? .hot : .cold)
-            }.store(in: &cancellables)
+                    appearance: weather.temperature.feelsLike == .hot ? .hot : .cold)
+        }.store(in: &cancellables)
     }
 }
 

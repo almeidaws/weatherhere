@@ -32,6 +32,8 @@ public class CoreLocationGPS: NSObject, GPS {
         locationManager.delegate = self
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             locationManager.startMonitoringSignificantLocationChanges()
+        } else if CLLocationManager.authorizationStatus() == .denied {
+            publisher.send(completion: .failure(.authorizationDenied(.authorizeManually(at: URL(string: UIApplication.openSettingsURLString)!))))
         } else {            
             locationManager.requestWhenInUseAuthorization()
         }
