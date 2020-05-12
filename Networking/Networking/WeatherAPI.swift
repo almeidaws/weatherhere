@@ -73,12 +73,12 @@ public enum WeatherAPI {
 }
 
 extension Requester {
-    public func weather(at location: Location, _ language: WeatherAPI.Language, _ bundle: Bundle = .main) -> AnyPublisher<Weather, RequestError> {
+    public func weather(at location: Location, _ languageIdentifier: String, _ bundle: Bundle = .main) -> AnyPublisher<Weather, RequestError> {
         let parameters = [
             "appid": Endpoint.apiKey(bundle),
             "lat": "\(location.latitude)",
             "lon": "\(location.longitude)",
-            "lang": language.rawValue
+            "lang": languageIdentifier
         ]
         return get(from: .weather(bundle), queryParameters: parameters, decoder: JSONDecoder())
             .map { (decodedResponse: RequestDecodedResponse<WeatherAPI.WeatherResponse>) -> Weather in
@@ -92,15 +92,15 @@ extension Requester {
             }.eraseToAnyPublisher()
     }
     
-    public func weatherNearby(at location: Location, maxPlaces: Double = 20, language: WeatherAPI.Language, _ bundle: Bundle = .main) -> AnyPublisher<[Weather], RequestError> {
+    public func weatherNearby(at location: Location, maxPlaces: Int = 20, _ languageIdentifier: String, _ bundle: Bundle = .main) -> AnyPublisher<[Weather], RequestError> {
         let parameters = [
             "appid": Endpoint.apiKey(bundle),
             "lat": "\(location.latitude)",
             "lon": "\(location.longitude)",
             "cnt": "\(maxPlaces)",
-            "lang": language.rawValue
+            "lang": languageIdentifier
         ]
-        return get(from: .weather(bundle), queryParameters: parameters, decoder: JSONDecoder())
+        return get(from: .weatherNearby(bundle), queryParameters: parameters, decoder: JSONDecoder())
             .map { (decodedResponse: RequestDecodedResponse<WeatherAPI.FindResponse>) -> [Weather] in
                 return decodedResponse.data.list.map { item in
                     let sky = item.weather.first?.description ?? "Unknown"

@@ -28,6 +28,7 @@
 		EC0958672469EF7A00413BD0 /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0958662469EF7A00413BD0 /* UIViewController+alert.swift */; };
 		EC0958692469F2DA00413BD0 /* Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0958682469F2DA00413BD0 /* Models.framework */; };
 		EC09586A2469F2DA00413BD0 /* Models.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC0958682469F2DA00413BD0 /* Models.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EC09586C246ACF5500413BD0 /* NearbyWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC09586B246ACF5500413BD0 /* NearbyWeatherViewModel.swift */; };
 		ECB3F44F2468821800431CA9 /* UIFont+italicSystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB3F44E2468821800431CA9 /* UIFont+italicSystemFont.swift */; };
 		ECFC68C22468747E0060C8AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFC68C12468747E0060C8AF /* AppDelegate.swift */; };
 		ECFC68C42468747E0060C8AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFC68C32468747E0060C8AF /* SceneDelegate.swift */; };
@@ -75,6 +76,7 @@
 		EC0958632469E8D600413BD0 /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC0958662469EF7A00413BD0 /* UIViewController+alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		EC0958682469F2DA00413BD0 /* Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC09586B246ACF5500413BD0 /* NearbyWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyWeatherViewModel.swift; sourceTree = "<group>"; };
 		ECB3F44E2468821800431CA9 /* UIFont+italicSystemFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+italicSystemFont.swift"; sourceTree = "<group>"; };
 		ECFC68BE2468747E0060C8AF /* Weather Here.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Here.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECFC68C12468747E0060C8AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			children = (
 				EC09574A2468BBC500413BD0 /* NearbyWeatherViewController.swift */,
 				EC09574C2468BBE600413BD0 /* NearbyWeatherView.swift */,
+				EC09586B246ACF5500413BD0 /* NearbyWeatherViewModel.swift */,
 			);
 			name = "Nearby Weather";
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				ECB3F44F2468821800431CA9 /* UIFont+italicSystemFont.swift in Sources */,
 				EC09574D2468BBE600413BD0 /* NearbyWeatherView.swift in Sources */,
 				ECFC68E0246879750060C8AF /* Drawable.swift in Sources */,
+				EC09586C246ACF5500413BD0 /* NearbyWeatherViewModel.swift in Sources */,
 				EC0957832468DD1900413BD0 /* LighStatusBarNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

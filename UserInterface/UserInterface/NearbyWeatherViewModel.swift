@@ -1,24 +1,24 @@
 //
-//  LocalWeatherViewModel.swift
+//  NearbyWeatherViewModel.swift
 //  UserInterface
 //
-//  Created by Gustavo Amaral on 11/05/20.
+//  Created by Gustavo Amaral on 12/05/20.
 //  Copyright © 2020 Gustavo Almeida Amaral. All rights reserved.
 //
 
 import Foundation
-import Combine
-import Models
 import Storage
 import Networking
 import GPS
+import Combine
 import Services
+import Models
 
-class LocalWeatherViewModel: Publisher {
-    typealias Output = Weather
+class NearbyWeatherViewModel: Publisher {
+    typealias Output = [Weather]
     typealias Failure = LocalWeatherViewModelError
     
-    private let publisher = PassthroughSubject<Weather, LocalWeatherViewModelError>()
+    private let publisher = PassthroughSubject<[Weather], LocalWeatherViewModelError>()
     private var cancellables = Set<AnyCancellable>()
     private let gps: GPS = Services.make(for: GPS.self)
     private let storage: Storage = Services.make(for: Storage.self)
@@ -29,15 +29,14 @@ class LocalWeatherViewModel: Publisher {
             .publisher
             .mapError { error in LocalWeatherViewModelError.gps(error) }
             .flatMap { location in self.networking
-                .weather(at: location, Locale.current.identifier)
+                .weatherNearby(at: location, Locale.current.identifier)
                 .mapError { error in LocalWeatherViewModelError.networking(error) }
                 .eraseToAnyPublisher()
             }.flatMap { weather in self.storage
-                .write([weather])
+                .write(weather)
                 .mapError { error in LocalWeatherViewModelError.storage(error) }
                 .eraseToAnyPublisher()
             }
-            .compactMap { weathers in weathers.first }
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
@@ -57,12 +56,12 @@ class LocalWeatherViewModel: Publisher {
         cancellables.removeAll()
     }
     
-    func receive<S>(subscriber: S) where S : Subscriber, LocalWeatherViewModelError == S.Failure, Weather == S.Input {
+    func receive<S>(subscriber: S) where S : Subscriber, LocalWeatherViewModelError == S.Failure, [Weather] == S.Input {
         publisher.receive(subscriber: subscriber)
     }
 }
 
-enum LocalWeatherViewModelError: Error, CustomStringConvertible {
+enum NearbyWeatherViewModelError: Error {
     case storage(StorageError)
     case networking(RequestError)
     case gps(GPSError)

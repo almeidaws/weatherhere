@@ -24,6 +24,7 @@ public class CoreLocationGPS: NSObject, GPS {
     }
     
     public func start() {
+        stop()
         guard CLLocationManager.locationServicesEnabled() else {
             publisher.send(completion: .failure(.disabledGlobally))
             return

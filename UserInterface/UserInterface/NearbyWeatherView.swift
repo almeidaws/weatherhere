@@ -129,7 +129,7 @@ fileprivate class Cell: UITableViewCell, Drawable {
         location.font = UIFont.preferredFont(forTextStyle: .title2).italicSystemFont()
         location.textColor = .white
         
-        weather.font = UIFont.preferredFont(forTextStyle: .title1).boldSystemFont()
+        weather.font = UIFont.preferredFont(forTextStyle: .headline).boldSystemFont()
         weather.textColor = .white
         weather.textAlignment = .right
         

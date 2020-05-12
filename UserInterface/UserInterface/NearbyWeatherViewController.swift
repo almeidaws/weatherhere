@@ -8,6 +8,7 @@
 
 import UIKit
 import Services
+import Combine
 
 class NearbyWeatherViewController: UIViewController, Drawable {
 
@@ -15,13 +16,64 @@ class NearbyWeatherViewController: UIViewController, Drawable {
     override func loadView() { view = nearbyWeatherView }
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     var isDrawn: Bool { navigationController?.navigationBar.tintColor == .clear }
+    private let viewModel = NearbyWeatherViewModel()
+     private var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nearbyWeatherView.draw()
         draw()
-        let model = NearbyWeatherView.Model(temperature: "18 °C", location: "Brasília - DF", weather: "Cloudy")
-        nearbyWeatherView.rows = Array(repeating: model, count: 20)
+        startReceivingWeather()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.startRetrievingWeather()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.stopRetrievingWeather()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        cancellables.removeAll()
+    }
+    
+    private func startReceivingWeather() {
+//        localWeatherView.isLoading = true
+        viewModel
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure(let error):
+                    if
+                        case let .gps(error) = error,
+                        case let .authorizationDenied(flow) = error,
+                        case let .authorizeManually(at: url) = flow {
+                        if UIApplication.shared.canOpenURL(url) {
+                            self.alert(title:"Unable to fetch your current location", message: "Would you like to reactive it on settings?", no: { }, yes: {
+                                UIApplication.shared.open(url)
+                            })
+                        } else {
+                            self.alert(title: "We haven't access to your location.", message: "Please, give access to this app and retry.")
+                        }
+                    } else {
+                        self.alert(error) { self.startReceivingWeather() }
+                    }
+                case .finished:
+                    break
+//                    self.localWeatherView.isLoading = false
+                }
+            }) { weathers in
+                self.nearbyWeatherView.rows = weathers.map { weather in
+                    NearbyWeatherView.Model(temperature: weather.temperature.localizedValue,
+                                            location: "\(weather.city) - \(weather.country)",
+                                            weather: weather.sky.capitalized)
+                }
+//                self.localWeatherView.isLoading = false
+        }.store(in: &cancellables)
     }
     
     func stylizeViews() {
