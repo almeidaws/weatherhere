@@ -17,15 +17,14 @@ class LocalWeatherViewController: UIViewController {
     override func loadView() { view = localWeatherView }
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     private let coordinator: Coordinator<LocalWeatherView.Button> = Services.make(for: LocalWeatherViewController.self)
-    private let gps: GPS = Services.make(for: NearbyWeatherViewController.self)
+    private let viewModel = LocalWeatherViewModel()
     private var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         localWeatherView.draw()
-        localWeatherView.model = .init(temperature: "34 °C", location: "Brasília - DF", appearance: .hot)
         localWeatherView.delegate = self
-        handleGPSUpdates()
+        startReceivingWeather()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,12 +34,12 @@ class LocalWeatherViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        gps.start()
+        viewModel.startRetrievingWeather()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        gps.stop()
+        viewModel.stopRetrievingWeather()
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,12 +47,21 @@ class LocalWeatherViewController: UIViewController {
         cancellables.removeAll()
     }
     
-    private func handleGPSUpdates() {
-        gps.publisher.sink(receiveCompletion: { completion in
-            print(completion)
-        }) { (location) in
-            print(location)
-        }.store(in: &cancellables)
+    private func startReceivingWeather() {
+        viewModel
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure(let error):
+                    self.alert(error)
+                case .finished:
+                    break
+                }
+            }) { weather in
+                self.localWeatherView.model = .init(temperature: weather.temperature.localizedValue,
+                                                    location: "\(weather.city) - \(weather.country)",
+                                                    appearance: weather.temperature.feelsLike == .hot ? .hot : .cold)
+            }.store(in: &cancellables)
     }
 }
 

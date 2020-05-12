@@ -17,6 +17,11 @@ public enum WeatherAPI {
         let main: Main
         let name: String
         let coord: Coord
+        let sys: Sys
+        
+        struct Sys: Decodable, Hashable {
+            let country: String
+        }
         
         struct Coord: Decodable, Hashable {
             let lat: Double
@@ -40,6 +45,11 @@ public enum WeatherAPI {
             let main: Main
             let weather: [Weather]
             let coord: Coord
+            let sys: Sys
+            
+            struct Sys: Decodable, Hashable {
+                let country: String
+            }
             
             struct Coord: Decodable, Hashable {
                 let lat: Double
@@ -74,28 +84,31 @@ extension Requester {
             .map { (decodedResponse: RequestDecodedResponse<WeatherAPI.WeatherResponse>) -> Weather in
                 let sky = decodedResponse.data.weather.first?.description ?? "Unknown"
                 return Weather(
-                    place: decodedResponse.data.name,
+                    city: decodedResponse.data.name,
+                    country: decodedResponse.data.sys.country,
                     location: .init(latitude: decodedResponse.data.coord.lat, longitude: decodedResponse.data.coord.lon),
-                    temperature: .init(fahrenheit: decodedResponse.data.main.temp),
+                    temperature: .init(kelvin: decodedResponse.data.main.temp),
                     sky: sky)
             }.eraseToAnyPublisher()
     }
     
-    public func weatherNearby(at location: Location, maxPlaces: Double = 20, _ bundle: Bundle = .main) -> AnyPublisher<[Weather], RequestError> {
+    public func weatherNearby(at location: Location, maxPlaces: Double = 20, language: WeatherAPI.Language, _ bundle: Bundle = .main) -> AnyPublisher<[Weather], RequestError> {
         let parameters = [
             "appid": Endpoint.apiKey(bundle),
             "lat": "\(location.latitude)",
             "lon": "\(location.longitude)",
-            "cnt": "\(maxPlaces)"
+            "cnt": "\(maxPlaces)",
+            "lang": language.rawValue
         ]
         return get(from: .weather(bundle), queryParameters: parameters, decoder: JSONDecoder())
             .map { (decodedResponse: RequestDecodedResponse<WeatherAPI.FindResponse>) -> [Weather] in
                 return decodedResponse.data.list.map { item in
                     let sky = item.weather.first?.description ?? "Unknown"
                     return Weather(
-                        place: item.name,
+                        city: item.name,
+                        country: item.sys.country,
                         location: .init(latitude: item.coord.lat, longitude: item.coord.lon),
-                        temperature: Weather.Temperature(fahrenheit: item.main.temp),
+                        temperature: Weather.Temperature(kelvin: item.main.temp),
                         sky: sky)
                 }
                 

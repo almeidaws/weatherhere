@@ -30,7 +30,8 @@ public class SQLiteStorage: Storage, Service {
                     try weathers.forEach { weather in
                         try db.run(weathersTable.insert(
                             or: .replace,
-                            placeExpr <- weather.place,
+                            cityExpr <- weather.city,
+                            countryExpr <- weather.country,
                             skyExpr <- weather.sky,
                             temperatureExpr <- weather.temperature.celsiusValue,
                             latitudeExpr <- weather.location.latitude,
@@ -50,7 +51,8 @@ public class SQLiteStorage: Storage, Service {
                    .tryMap { db in
                        do {
                            return try db.prepare(weathersTable).map { row -> Weather in
-                                Weather(place: row[placeExpr],
+                                Weather(city: row[cityExpr],
+                                        country: row[countryExpr],
                                         location: .init(latitude: row[latitudeExpr], longitude: row[longitudeExpr]),
                                         temperature: .init(celsius: row[temperatureExpr]),
                                         sky: row[skyExpr])
@@ -65,7 +67,8 @@ public class SQLiteStorage: Storage, Service {
 }
 
 fileprivate let weathersTable = Table("weather")
-fileprivate let placeExpr = Expression<String>("place")
+fileprivate let cityExpr = Expression<String>("city")
+fileprivate let countryExpr = Expression<String>("country")
 fileprivate let skyExpr = Expression<String>("sky")
 fileprivate let temperatureExpr = Expression<Double>("temperature")
 fileprivate let latitudeExpr = Expression<Double>("latitude")
@@ -75,7 +78,8 @@ fileprivate func createSchema(at connection: Connection) -> AnyPublisher<Connect
     
     do {
         try connection.run(weathersTable.create(ifNotExists: true) { builder in
-            builder.column(placeExpr)
+            builder.column(cityExpr)
+            builder.column(countryExpr)
             builder.column(skyExpr)
             builder.column(temperatureExpr)
             builder.column(latitudeExpr)

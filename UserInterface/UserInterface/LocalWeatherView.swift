@@ -92,6 +92,7 @@ class LocalWeatherView: UIView, Drawable {
     
     func createViewsHierarchy() {
         let background = UIImageView()
+        background.image = #imageLiteral(resourceName: "Local Weather - Hot.png")
         self.background = background
         addSubview(background)
         

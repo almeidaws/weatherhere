@@ -8,8 +8,9 @@
 
 import Foundation
 import Combine
+import Services
 
-public class URLSessionRequester: Requester {
+public class URLSessionRequester: Requester, Service {
     
     public init() { }
     

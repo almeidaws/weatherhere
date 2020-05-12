@@ -30,7 +30,11 @@ public class CoreLocationGPS: NSObject, GPS {
         }
         
         locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            locationManager.startMonitoringSignificantLocationChanges()
+        } else {            
+            locationManager.requestWhenInUseAuthorization()
+        }
     }
     
     public func stop() {
