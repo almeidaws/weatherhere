@@ -10,21 +10,53 @@ import UIKit
 import SnapKit
 
 class LocalWeatherView: UIView, Drawable {
-
+    
     private weak var temperature: UILabel!
     private weak var location: UILabel!
     private weak var seeNearby: UIButton!
     private weak var scrollView: UIScrollView!
     private weak var scrollViewContainer: UIView!
     private weak var background: UIImageView!
+    private weak var activityIndicator: UIActivityIndicatorView!
+    private weak var retry: UIButton!
     
     var isDrawn: Bool { return temperature != nil }
+    var isLoading: Bool {
+        get { activityIndicator.isAnimating }
+        set {
+            if newValue {
+                presentActivityIndicator()
+            } else {
+                hidesActivityIndicator()
+            }
+        }
+    }
     weak var delegate: LocalWeatherViewDelegate?
     var model: Model? {
         didSet {
             guard let model = model else { return }
             set(model)
         }
+    }
+    
+    private func hidesActivityIndicator() {
+        seeNearby.isUserInteractionEnabled = true
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
+            self.activityIndicator.stopAnimating()
+            self.temperature.alpha = 1
+            self.location.alpha = 1
+            self.seeNearby.alpha = 1
+        }, completion: nil)
+    }
+    
+    private func presentActivityIndicator() {
+        seeNearby.isUserInteractionEnabled = false
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
+            self.activityIndicator.startAnimating()
+            self.temperature.alpha = 0
+            self.location.alpha = 0
+            self.seeNearby.alpha = 0
+        }, completion: nil)
     }
     
     private func set(_ model: Model) {
@@ -69,25 +101,35 @@ class LocalWeatherView: UIView, Drawable {
             make.centerY.equalTo(snp.centerY).multipliedBy(1.45).priority(.high)
             make.top.greaterThanOrEqualTo(temperature.snp.bottom).offset(44).priority(.required)
         }
+        
+        activityIndicator.snp.makeConstraints { make in
+            make.edges.equalTo(safeAreaLayoutGuide.snp.edges)
+        }
     }
     
     func stylizeViews() {
         temperature.font = UIFont.preferredFont(forTextStyle: .largeTitle).withSize(60)
         temperature.textColor = .white
         temperature.textAlignment = .center
+        temperature.alpha = 0
         
         location.font = UIFont.preferredFont(forTextStyle: .title2).italicSystemFont()
         location.textColor = .white
         location.textAlignment = .center
+        location.alpha = 0
         
         seeNearby.setTitleColor(.white, for: .normal)
         seeNearby.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
+        seeNearby.alpha = 0
+        seeNearby.isUserInteractionEnabled = false
         
         background.contentMode = .scaleAspectFill
         
         scrollView.bounces = true
         scrollView.alwaysBounceVertical = true
         scrollView.showsVerticalScrollIndicator = false
+        
+        activityIndicator.color = .white
     }
     
     func createViewsHierarchy() {
@@ -117,12 +159,18 @@ class LocalWeatherView: UIView, Drawable {
         self.seeNearby = seeNearby
         seeNearby.addTarget(self, action: #selector(handleSeeNearby(_:)), for: .touchUpInside)
         addSubview(seeNearby)
+        
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+        self.activityIndicator = activityIndicator
+        addSubview(activityIndicator)
     }
     
     @objc private func handleSeeNearby(_ sender: UIButton) {
         delegate?.view(self, didTouch: .seeNearby)
     }
-
+    
     struct Model {
         let temperature: String
         let location: String
@@ -140,7 +188,7 @@ class LocalWeatherView: UIView, Drawable {
             }
         }
     }
-     
+    
     enum Button: Int {
         case seeNearby
     }

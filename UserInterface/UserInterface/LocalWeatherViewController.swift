@@ -48,6 +48,7 @@ class LocalWeatherViewController: UIViewController {
     }
     
     private func startReceivingWeather() {
+        localWeatherView.isLoading = true
         viewModel
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
@@ -55,9 +56,10 @@ class LocalWeatherViewController: UIViewController {
                 case .failure(let error):
                     self.alert(error)
                 case .finished:
-                    break
+                    self.localWeatherView.isLoading = false
                 }
             }) { weather in
+                self.localWeatherView.isLoading = false
                 self.localWeatherView.model = .init(temperature: weather.temperature.localizedValue,
                                                     location: "\(weather.city) - \(weather.country)",
                                                     appearance: weather.temperature.feelsLike == .hot ? .hot : .cold)
