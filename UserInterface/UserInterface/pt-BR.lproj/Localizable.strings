@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  UserInterface
+
+  Created by Gustavo Amaral on 13/05/20.
+  Copyright © 2020 Gustavo Almeida Amaral. All rights reserved.
+*/
+
+"See Nearby" = "Verificar proximidades";
+"Retry" = "Tentar novamente";
+"Unable to fetch your current location" = "Não foi possível pegar sua localização atual";
+"Would you like to reactivate it on settings?" = "Você gostaria de reativar isso nas configurações?";
+"We haven't access to your location." = "Nós não temos acesso a sua localização.";
+"Please, give access to this app and retry." = "Por favor, nós de acesso de localização para este app e tente novamente.";
+"An error has occurred..." = "Aconteceu um problema...";
+"Ok" = "Ok";
+"No" = "Não";
+"Yes" = "Sim";

@@ -2,6 +2,39 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>CFBundleIcons</key>
+    <dict>
+        <key>CFBundlePrimaryIcon</key>
+        <dict>
+            <key>CFBundleIconFiles</key>
+            <array>
+                <string>Icon - Cool</string>
+            </array>
+            <key>UIPrerenderedIcon</key>
+            <false/>
+        </dict>
+        <key>CFBundleAlternateIcons</key>
+        <dict>
+            <key>Hot</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>Icon - Hot</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            <key>Cold</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>Icon - Cold</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+        </dict>
+    </dict>
 	<key>BASE_URL_KEY</key>
 	<string>https://api.openweathermap.org/data/2.5</string>
 	<key>API_KEY</key>

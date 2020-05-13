@@ -60,11 +60,11 @@ class LocalWeatherViewController: UIViewController {
                         case let .authorizationDenied(flow) = error,
                         case let .authorizeManually(at: url) = flow {
                         if UIApplication.shared.canOpenURL(url) {
-                            self.alert(title:"Unable to fetch your current location", message: "Would you like to reactive it on settings?", no: { }, yes: {
+                            self.alert(title:"Unable to fetch your current location".localized, message: "Would you like to reactivate it on settings?".localized, no: { }, yes: {
                                 UIApplication.shared.open(url)
                             })
                         } else {
-                            self.alert(title: "We haven't access to your location.", message: "Please, give access to this app and retry.")
+                            self.alert(title: "We haven't access to your location.".localized, message: "Please, give access to this app and retry.".localized)
                         }
                     } else {
                         self.alert(error) { self.startReceivingWeather() }

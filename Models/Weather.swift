@@ -35,8 +35,8 @@ public struct Weather: Codable, Hashable, Comparable {
         public var localizedValue: String {
             let formatter = MeasurementFormatter()
             formatter.unitStyle = .short
-            formatter.unitOptions = .providedUnit
-            formatter.locale = Locale.current
+            formatter.unitOptions = .naturalScale
+            formatter.locale = .current
             return formatter.string(from: Measurement(value: celsiusValue, unit: UnitTemperature.celsius))
         }
         

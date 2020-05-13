@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  UserInterface
+
+  Created by Gustavo Amaral on 13/05/20.
+  Copyright © 2020 Gustavo Almeida Amaral. All rights reserved.
+*/
+
+"See Nearby" = "See Nearby";
+"Retry" = "Retry";
+"Unable to fetch your current location" = "Unable to fetch your current location";
+"Would you like to reactivate it on settings?" = "Would you like to reactivate it on settings?";
+"We haven't access to your location." = "We haven't access to your location.";
+"Please, give access to this app and retry." = "Please, give access to this app and retry.";
+"An error has occurred..." = "An error has occurred...";
+"Ok" = "Ok";
+"No" = "No";
+"Yes" = "Yes";

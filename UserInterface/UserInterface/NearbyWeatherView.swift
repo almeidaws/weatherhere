@@ -134,7 +134,7 @@ fileprivate class Cell: UITableViewCell, Drawable {
         location.snp.makeConstraints { make in
             make.leading.equalTo(snp.leading).inset(29)
             make.top.equalTo(temperature.snp.bottom)
-            make.trailing.equalTo(weather.snp.leading)
+            make.trailing.equalTo(snp.trailing).inset(29)
         }
         
         weather.snp.makeConstraints { make in

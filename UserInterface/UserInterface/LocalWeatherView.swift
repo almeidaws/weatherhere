@@ -154,7 +154,7 @@ class LocalWeatherView: UIView, Drawable {
         scrollViewContainer.addSubview(location)
         
         let seeNearby = UIButton(type: .system)
-        seeNearby.setTitle("See Nearby", for: .normal)
+        seeNearby.setTitle("See Nearby".localized, for: .normal)
         self.seeNearby = seeNearby
         seeNearby.addTarget(self, action: #selector(handleSeeNearby(_:)), for: .touchUpInside)
         addSubview(seeNearby)

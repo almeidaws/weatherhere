@@ -40,7 +40,7 @@ class LocalWeatherViewModel: Publisher {
         
         let readFromInternetPublisher = gpsPublisher
             .flatMap { location in self.networking
-                .weather(at: location, Locale.current.identifier)
+                .weather(at: location, String(Locale.current.identifier.split(separator: "_")[0]))
                 .mapError { error in LocalWeatherViewModelError.networking(error) }
                 .eraseToAnyPublisher()
             }
