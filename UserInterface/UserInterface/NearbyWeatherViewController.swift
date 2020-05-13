@@ -24,6 +24,7 @@ class NearbyWeatherViewController: UIViewController, Drawable {
         nearbyWeatherView.draw()
         draw()
         startReceivingWeather()
+        nearbyWeatherView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,7 +43,7 @@ class NearbyWeatherViewController: UIViewController, Drawable {
     }
     
     private func startReceivingWeather() {
-//        localWeatherView.isLoading = true
+        nearbyWeatherView.isLoading = true
         viewModel
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
@@ -63,8 +64,7 @@ class NearbyWeatherViewController: UIViewController, Drawable {
                         self.alert(error) { self.startReceivingWeather() }
                     }
                 case .finished:
-                    break
-//                    self.localWeatherView.isLoading = false
+                    self.nearbyWeatherView.isLoading = false
                 }
             }) { weathers in
                 self.nearbyWeatherView.rows = weathers.map { weather in
@@ -72,7 +72,7 @@ class NearbyWeatherViewController: UIViewController, Drawable {
                                             location: "\(weather.city) - \(weather.country)",
                                             weather: weather.sky.capitalized)
                 }
-//                self.localWeatherView.isLoading = false
+                self.nearbyWeatherView.isLoading = false
         }.store(in: &cancellables)
     }
     
@@ -82,5 +82,11 @@ class NearbyWeatherViewController: UIViewController, Drawable {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = .white
+    }
+}
+
+extension NearbyWeatherViewController: NearbyWeatherViewDelegate {
+    func viewDidRefresh(_ view: NearbyWeatherView) {
+        startReceivingWeather()
     }
 }

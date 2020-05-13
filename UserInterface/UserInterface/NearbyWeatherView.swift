@@ -13,7 +13,20 @@ class NearbyWeatherView: UIView, Drawable {
     private weak var tableView: UITableView!
     private weak var background: UIImageView!
     var isDrawn: Bool { tableView != nil }
-    
+    weak var delegate: NearbyWeatherViewDelegate?
+    var isLoading: Bool {
+        get { tableView.refreshControl?.isRefreshing ?? false }
+        set {
+            guard let refreshControl = tableView.refreshControl else { return }
+            if newValue {
+                refreshControl.beginRefreshing()
+                tableView.setContentOffset(CGPoint(x: 0, y: -refreshControl.frame.height), animated: true)
+            } else {
+                refreshControl.endRefreshing()
+                tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            }
+        }
+    }
     var rows = [Model]() { didSet { tableView.reloadData() } }
     
     func makeConstraints() {
@@ -30,6 +43,7 @@ class NearbyWeatherView: UIView, Drawable {
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
+        tableView.refreshControl?.tintColor = .init(white: 1, alpha: 0.8)
         background.image = #imageLiteral(resourceName: "Purple Background.png")
         background.contentMode = .scaleAspectFill
     }
@@ -45,6 +59,14 @@ class NearbyWeatherView: UIView, Drawable {
         tableView.register(Cell.self, forCellReuseIdentifier: cellIdentifier)
         self.tableView = tableView
         addSubview(tableView)
+        
+        let refreshControl = UIRefreshControl()
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
+    }
+    
+    @objc private func handleRefresh(_ sender: UIRefreshControl) {
+        delegate?.viewDidRefresh(self)
     }
     
     struct Model {
@@ -149,6 +171,10 @@ fileprivate class Cell: UITableViewCell, Drawable {
         self.weather = weather
         addSubview(weather)
     }
+}
+
+protocol NearbyWeatherViewDelegate: AnyObject {
+    func viewDidRefresh(_ view: NearbyWeatherView)
 }
 
 fileprivate let cellIdentifier = "cellIdentifier"
