@@ -10,6 +10,7 @@ import UIKit
 import Services
 import GPS
 import Combine
+import Models
 
 class LocalWeatherViewController: UIViewController {
     
@@ -75,7 +76,7 @@ class LocalWeatherViewController: UIViewController {
                 self.localWeatherView.isLoading = false
                 self.localWeatherView.model = .init(temperature: weather.temperature.localizedValue,
                                                     location: "\(weather.city) - \(weather.country)",
-                    appearance: weather.temperature.feelsLike == .hot ? .hot : .cold)
+                    appearance: weather.temperature.feelsLike.asModelImage)
         }.store(in: &cancellables)
     }
 }
@@ -83,5 +84,15 @@ class LocalWeatherViewController: UIViewController {
 extension LocalWeatherViewController: LocalWeatherViewDelegate {
     func view(_ view: LocalWeatherView, didTouch button: LocalWeatherView.Button) {
         coordinator.present(button, from: self)
+    }
+}
+
+fileprivate extension Weather.Temperature.FeelsLike {
+    var asModelImage: LocalWeatherView.Model.Image {
+        switch self {
+        case .hot: return .hot
+        case .cool: return .cool
+        case .cold: return .cold
+        }
     }
 }

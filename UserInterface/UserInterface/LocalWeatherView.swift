@@ -177,11 +177,13 @@ class LocalWeatherView: UIView, Drawable {
         
         enum Image {
             case hot
+            case cool
             case cold
             
             var image: UIImage {
                 switch self {
                 case .hot: return #imageLiteral(resourceName: "Local Weather - Hot.png")
+                case .cool: return #imageLiteral(resourceName: "Local Weather - Cool.png")
                 case .cold: return #imageLiteral(resourceName: "Local Weather - Cold.png")
                 }
             }
