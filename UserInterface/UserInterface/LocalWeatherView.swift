@@ -18,6 +18,7 @@ class LocalWeatherView: UIView, Drawable {
     private weak var scrollViewContainer: UIView!
     private weak var background: UIImageView!
     private weak var activityIndicator: UIActivityIndicatorView!
+    @Configured(valueKey: "com.almeidaws.WeatherHere.backgroundImage", defaultValue: Model.Image.cool) private var defaultBackgroundImage: Model.Image
     
     var isDrawn: Bool { return temperature != nil }
     var isLoading: Bool {
@@ -61,6 +62,7 @@ class LocalWeatherView: UIView, Drawable {
     private func set(_ model: Model) {
         temperature.text = model.temperature
         location.text = model.location
+        defaultBackgroundImage = model.appearance
         UIView.transition(with: background, duration: 1, options: .transitionCrossDissolve, animations: {
             self.background.image = model.appearance.image
         }, completion: nil)
@@ -133,7 +135,7 @@ class LocalWeatherView: UIView, Drawable {
     
     func createViewsHierarchy() {
         let background = UIImageView()
-        background.image = #imageLiteral(resourceName: "Local Weather - Hot.png")
+        background.image = defaultBackgroundImage.image
         self.background = background
         addSubview(background)
         
@@ -175,7 +177,7 @@ class LocalWeatherView: UIView, Drawable {
         let location: String
         let appearance: Image
         
-        enum Image {
+        enum Image: String, Codable {
             case hot
             case cool
             case cold
