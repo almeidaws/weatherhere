@@ -23,7 +23,6 @@ class NearbyWeatherView: UIView, Drawable {
                 tableView.setContentOffset(CGPoint(x: 0, y: -refreshControl.frame.height), animated: true)
             } else {
                 refreshControl.endRefreshing()
-                tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             }
         }
     }

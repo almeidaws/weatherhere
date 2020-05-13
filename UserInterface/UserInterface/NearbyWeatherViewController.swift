@@ -30,6 +30,7 @@ class NearbyWeatherViewController: UIViewController, Drawable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewModel.startRetrievingWeather()
+        nearbyWeatherView.isLoading = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -43,7 +44,6 @@ class NearbyWeatherViewController: UIViewController, Drawable {
     }
     
     private func startReceivingWeather() {
-        nearbyWeatherView.isLoading = true
         viewModel
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
@@ -87,6 +87,6 @@ class NearbyWeatherViewController: UIViewController, Drawable {
 
 extension NearbyWeatherViewController: NearbyWeatherViewDelegate {
     func viewDidRefresh(_ view: NearbyWeatherView) {
-        startReceivingWeather()
+        viewModel.startRetrievingWeather()
     }
 }
