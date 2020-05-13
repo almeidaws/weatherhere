@@ -25,19 +25,35 @@ class LocalWeatherViewModel: Publisher {
     private let networking: Requester = Services.make(for: Requester.self)
     
     func startRetrievingWeather() {
-        gps
+        let gpsPublisher = gps
             .publisher
             .mapError { error in LocalWeatherViewModelError.gps(error) }
+            .eraseToAnyPublisher()
+        
+        let readFromCachePublisher = gpsPublisher
+            .flatMap { location in
+                self.storage.read()
+                .mapError { error in LocalWeatherViewModelError.storage(error) }
+                .map { weathers in weathers.sorted(distanceTo: location) }
+                .compactMap { weathers in weathers.first }
+            }.eraseToAnyPublisher()
+        
+        let readFromInternetPublisher = gpsPublisher
             .flatMap { location in self.networking
                 .weather(at: location, Locale.current.identifier)
                 .mapError { error in LocalWeatherViewModelError.networking(error) }
                 .eraseToAnyPublisher()
-            }.flatMap { weather in self.storage
+            }
+            .flatMap { weather in self.storage
                 .write([weather])
                 .mapError { error in LocalWeatherViewModelError.storage(error) }
                 .eraseToAnyPublisher()
             }
             .compactMap { weathers in weathers.first }
+            .eraseToAnyPublisher()
+        
+        readFromCachePublisher
+            .merge(with: readFromInternetPublisher)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
@@ -48,6 +64,7 @@ class LocalWeatherViewModel: Publisher {
             }) { weather in
                 self.publisher.send(weather)
             }.store(in: &cancellables)
+        
         gps.start()
     }
     

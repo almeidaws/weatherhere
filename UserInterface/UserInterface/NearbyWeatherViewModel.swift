@@ -25,18 +25,32 @@ class NearbyWeatherViewModel: Publisher {
     private let networking: Requester = Services.make(for: Requester.self)
     
     func startRetrievingWeather() {
-        gps
+        let gpsPublisher = gps
             .publisher
             .mapError { error in LocalWeatherViewModelError.gps(error) }
+        
+        let readFromCachePublisher = gpsPublisher
+        .flatMap { location in
+            self.storage.read()
+            .mapError { error in LocalWeatherViewModelError.storage(error) }
+            .map { weathers in weathers.sorted(distanceTo: location) }
+        }.eraseToAnyPublisher()
+        
+        let readFromInternetPublisher = gpsPublisher
             .flatMap { location in self.networking
                 .weatherNearby(at: location, Locale.current.identifier)
                 .mapError { error in LocalWeatherViewModelError.networking(error) }
                 .eraseToAnyPublisher()
-            }.flatMap { weather in self.storage
+            }
+            .flatMap { weather in self.storage
                 .write(weather)
                 .mapError { error in LocalWeatherViewModelError.storage(error) }
                 .eraseToAnyPublisher()
             }
+            .eraseToAnyPublisher()
+        
+        readFromCachePublisher
+            .merge(with: readFromInternetPublisher)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
