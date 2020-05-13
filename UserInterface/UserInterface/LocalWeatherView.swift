@@ -181,10 +181,11 @@ class LocalWeatherView: UIView, Drawable {
             case cold
             
             var image: UIImage {
+                let isOld = ceil(UIScreen.main.bounds.width / UIScreen.main.bounds.height) == ceil(375 / 667)
                 switch self {
-                case .hot: return #imageLiteral(resourceName: "Local Weather - Hot.png")
-                case .cool: return #imageLiteral(resourceName: "Local Weather - Cool.png")
-                case .cold: return #imageLiteral(resourceName: "Local Weather - Cold.png")
+                case .hot: return isOld ? #imageLiteral(resourceName: "Local Weather - Hot - 2.png") : #imageLiteral(resourceName: "Local Weather - Hot.png")
+                case .cool: return isOld ? #imageLiteral(resourceName: "Local Weather - Cool - 2.png") : #imageLiteral(resourceName: "Local Weather - Cool.png")
+                case .cold: return isOld ? #imageLiteral(resourceName: "Local Weather - Cold - 2.png") : #imageLiteral(resourceName: "Local Weather - Cold.png")
                 }
             }
         }
