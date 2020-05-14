@@ -20,9 +20,15 @@ class LocalWeatherViewModel: Publisher {
     
     private var publisher = PassthroughSubject<Weather, LocalWeatherViewModelError>()
     private var cancellables = Set<AnyCancellable>()
+    
+    
     private var gps: GPS = Services.make(for: GPS.self)
     private let storage: Storage = Services.make(for: Storage.self)
     private let networking: Requester = Services.make(for: Requester.self)
+    
+    
+    
+    
     
     func startRetrievingWeather() {
         let gpsPublisher = gps

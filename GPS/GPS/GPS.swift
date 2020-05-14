@@ -9,9 +9,8 @@
 import Foundation
 import Combine
 import Models
-import Services
 
-public protocol GPS: Service {
+public protocol GPS {
     var publisher: PassthroughSubject<Location, GPSError> { get }
     func start()
     func stop()

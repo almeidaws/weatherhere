@@ -6,4 +6,7 @@
 //  Copyright © 2020 Gustavo Almeida Amaral. All rights reserved.
 //
 
-import Foundation
+import Services
+import Storage
+
+extension SQLiteStorage: Service { }

@@ -29,6 +29,9 @@
 		EC0958692469F2DA00413BD0 /* Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0958682469F2DA00413BD0 /* Models.framework */; };
 		EC09586A2469F2DA00413BD0 /* Models.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC0958682469F2DA00413BD0 /* Models.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC09586C246ACF5500413BD0 /* NearbyWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC09586B246ACF5500413BD0 /* NearbyWeatherViewModel.swift */; };
+		EC9C8CC8246D80DC00218746 /* CoreLocationGPS+Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9C8CC7246D80DC00218746 /* CoreLocationGPS+Service.swift */; };
+		EC9C8CCA246D810B00218746 /* SQLiteStorage+Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9C8CC9246D810B00218746 /* SQLiteStorage+Service.swift */; };
+		EC9C8CCC246D812500218746 /* URLSessionRequester+Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9C8CCB246D812500218746 /* URLSessionRequester+Service.swift */; };
 		ECB3F44F2468821800431CA9 /* UIFont+italicSystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB3F44E2468821800431CA9 /* UIFont+italicSystemFont.swift */; };
 		ECB714C5246C1D9100450F82 /* Icon - Cold.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714BC246C1D9000450F82 /* Icon - Cold.png */; };
 		ECB714C6246C1D9100450F82 /* Icon - Hot@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714BD246C1D9000450F82 /* Icon - Hot@3x.png */; };
@@ -90,6 +93,9 @@
 		EC0958662469EF7A00413BD0 /* UIViewController+alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		EC0958682469F2DA00413BD0 /* Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC09586B246ACF5500413BD0 /* NearbyWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyWeatherViewModel.swift; sourceTree = "<group>"; };
+		EC9C8CC7246D80DC00218746 /* CoreLocationGPS+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreLocationGPS+Service.swift"; sourceTree = "<group>"; };
+		EC9C8CC9246D810B00218746 /* SQLiteStorage+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLiteStorage+Service.swift"; sourceTree = "<group>"; };
+		EC9C8CCB246D812500218746 /* URLSessionRequester+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionRequester+Service.swift"; sourceTree = "<group>"; };
 		ECB3F44E2468821800431CA9 /* UIFont+italicSystemFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+italicSystemFont.swift"; sourceTree = "<group>"; };
 		ECB714BC246C1D9000450F82 /* Icon - Cold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon - Cold.png"; sourceTree = "<group>"; };
 		ECB714BD246C1D9000450F82 /* Icon - Hot@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon - Hot@3x.png"; sourceTree = "<group>"; };
@@ -173,6 +179,9 @@
 				EC09574E2468BE2300413BD0 /* UIFont+boldSystemFont.swift */,
 				EC0958662469EF7A00413BD0 /* UIViewController+alert.swift */,
 				ECB714D5246C232100450F82 /* String+localized.swift */,
+				EC9C8CC7246D80DC00218746 /* CoreLocationGPS+Service.swift */,
+				EC9C8CC9246D810B00218746 /* SQLiteStorage+Service.swift */,
+				EC9C8CCB246D812500218746 /* URLSessionRequester+Service.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -435,12 +444,15 @@
 				EC09585C2469E88300413BD0 /* LocalWeatherViewModel.swift in Sources */,
 				ECFC68DB246875810060C8AF /* LocalWeatherViewController.swift in Sources */,
 				ECFC68DD246878DC0060C8AF /* LocalWeatherView.swift in Sources */,
+				EC9C8CCA246D810B00218746 /* SQLiteStorage+Service.swift in Sources */,
 				ECB714D6246C232100450F82 /* String+localized.swift in Sources */,
 				ECB3F44F2468821800431CA9 /* UIFont+italicSystemFont.swift in Sources */,
 				ECB714DF246C3AB400450F82 /* Configured.swift in Sources */,
+				EC9C8CCC246D812500218746 /* URLSessionRequester+Service.swift in Sources */,
 				EC09574D2468BBE600413BD0 /* NearbyWeatherView.swift in Sources */,
 				ECFC68E0246879750060C8AF /* Drawable.swift in Sources */,
 				EC09586C246ACF5500413BD0 /* NearbyWeatherViewModel.swift in Sources */,
+				EC9C8CC8246D80DC00218746 /* CoreLocationGPS+Service.swift in Sources */,
 				EC0957832468DD1900413BD0 /* LighStatusBarNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

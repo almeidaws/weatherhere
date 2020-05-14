@@ -27,8 +27,6 @@
 		EC09580C246996F700413BD0 /* RequisitionsTests+get.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC09580B246996F700413BD0 /* RequisitionsTests+get.swift */; };
 		EC09580E2469970A00413BD0 /* RequisitionsTests+post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC09580D2469970A00413BD0 /* RequisitionsTests+post.swift */; };
 		EC0958102469975F00413BD0 /* MockedRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC09580F2469975F00413BD0 /* MockedRequester.swift */; };
-		EC0958122469977F00413BD0 /* Services.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0958112469977F00413BD0 /* Services.framework */; };
-		EC0958132469977F00413BD0 /* Services.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC0958112469977F00413BD0 /* Services.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC0958152469982800413BD0 /* WeatherAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0958142469982800413BD0 /* WeatherAPITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +47,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EC0958132469977F00413BD0 /* Services.framework in Embed Frameworks */,
 				EC0958012469952600413BD0 /* Models.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -89,7 +86,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC0958122469977F00413BD0 /* Services.framework in Frameworks */,
 				EC0958002469952600413BD0 /* Models.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

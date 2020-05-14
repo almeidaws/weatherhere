@@ -29,7 +29,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return SQLiteStorage(.uri("\(path)/db.sqlite3"))
         }
     }
-    
-    
 }
 

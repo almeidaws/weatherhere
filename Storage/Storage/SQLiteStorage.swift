@@ -10,9 +10,8 @@ import Foundation
 import SQLite
 import Models
 import Combine
-import Services
 
-public class SQLiteStorage: Storage, Service {
+public class SQLiteStorage: Storage {
     
     private let connection: AnyPublisher<Connection, StorageError>
     

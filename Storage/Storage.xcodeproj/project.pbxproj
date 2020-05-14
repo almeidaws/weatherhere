@@ -16,8 +16,6 @@
 		EC0958532469E4A200413BD0 /* Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0958522469E4A200413BD0 /* Models.framework */; };
 		EC0958542469E4A200413BD0 /* Models.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC0958522469E4A200413BD0 /* Models.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC0958572469E51300413BD0 /* SQLiteStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0958562469E51300413BD0 /* SQLiteStorageTests.swift */; };
-		EC0958592469E54200413BD0 /* Services.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0958582469E54200413BD0 /* Services.framework */; };
-		EC09585A2469E54200413BD0 /* Services.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC0958582469E54200413BD0 /* Services.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +35,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EC09585A2469E54200413BD0 /* Services.framework in Embed Frameworks */,
 				EC0958542469E4A200413BD0 /* Models.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -70,7 +67,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC0958532469E4A200413BD0 /* Models.framework in Frameworks */,
-				EC0958592469E54200413BD0 /* Services.framework in Frameworks */,
 				E6D6DB309701F06E8530A482 /* Pods_Storage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
