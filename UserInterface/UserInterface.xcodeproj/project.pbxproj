@@ -16,11 +16,7 @@
 		EC09577D2468C85B00413BD0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC09577C2468C85B00413BD0 /* Coordinator.swift */; };
 		EC09577F2468C9D300413BD0 /* LocalToNearbyWeatherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC09577E2468C9D300413BD0 /* LocalToNearbyWeatherCoordinator.swift */; };
 		EC0957832468DD1900413BD0 /* LighStatusBarNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0957822468DD1900413BD0 /* LighStatusBarNavigationController.swift */; };
-		EC0957BD246963FB00413BD0 /* GPS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0957BC246963FB00413BD0 /* GPS.framework */; };
-		EC0957BE246963FB00413BD0 /* GPS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC0957BC246963FB00413BD0 /* GPS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC09585C2469E88300413BD0 /* LocalWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC09585B2469E88300413BD0 /* LocalWeatherViewModel.swift */; };
-		EC09585E2469E8CD00413BD0 /* GPS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC09585D2469E8CD00413BD0 /* GPS.framework */; };
-		EC09585F2469E8CD00413BD0 /* GPS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC09585D2469E8CD00413BD0 /* GPS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC0958612469E8D200413BD0 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0958602469E8D200413BD0 /* Networking.framework */; };
 		EC0958622469E8D200413BD0 /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC0958602469E8D200413BD0 /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC0958642469E8D600413BD0 /* Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0958632469E8D600413BD0 /* Storage.framework */; };
@@ -32,16 +28,18 @@
 		EC9C8CC8246D80DC00218746 /* CoreLocationGPS+Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9C8CC7246D80DC00218746 /* CoreLocationGPS+Service.swift */; };
 		EC9C8CCA246D810B00218746 /* SQLiteStorage+Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9C8CC9246D810B00218746 /* SQLiteStorage+Service.swift */; };
 		EC9C8CCC246D812500218746 /* URLSessionRequester+Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9C8CCB246D812500218746 /* URLSessionRequester+Service.swift */; };
+		EC9C8CCD246D8A6600218746 /* Icon - Cold.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714BC246C1D9000450F82 /* Icon - Cold.png */; };
+		EC9C8CCE246D8A6600218746 /* Icon - Cold@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714C3246C1D9100450F82 /* Icon - Cold@2x.png */; };
+		EC9C8CCF246D8A6600218746 /* Icon - Cold@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714C4246C1D9100450F82 /* Icon - Cold@3x.png */; };
+		EC9C8CD0246D8A6600218746 /* Icon - Cool.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714C1246C1D9000450F82 /* Icon - Cool.png */; };
+		EC9C8CD1246D8A6600218746 /* Icon - Cool@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714BF246C1D9000450F82 /* Icon - Cool@2x.png */; };
+		EC9C8CD2246D8A6600218746 /* Icon - Cool@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714BE246C1D9000450F82 /* Icon - Cool@3x.png */; };
+		EC9C8CD3246D8A6600218746 /* Icon - Hot.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714C0246C1D9000450F82 /* Icon - Hot.png */; };
+		EC9C8CD4246D8A6600218746 /* Icon - Hot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714C2246C1D9100450F82 /* Icon - Hot@2x.png */; };
+		EC9C8CD5246D8A6600218746 /* Icon - Hot@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714BD246C1D9000450F82 /* Icon - Hot@3x.png */; };
+		EC9C8CD7246D8AD500218746 /* GPS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9C8CD6246D8AD500218746 /* GPS.framework */; };
+		EC9C8CD8246D8AD500218746 /* GPS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC9C8CD6246D8AD500218746 /* GPS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECB3F44F2468821800431CA9 /* UIFont+italicSystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB3F44E2468821800431CA9 /* UIFont+italicSystemFont.swift */; };
-		ECB714C5246C1D9100450F82 /* Icon - Cold.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714BC246C1D9000450F82 /* Icon - Cold.png */; };
-		ECB714C6246C1D9100450F82 /* Icon - Hot@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714BD246C1D9000450F82 /* Icon - Hot@3x.png */; };
-		ECB714C7246C1D9100450F82 /* Icon - Cool@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714BE246C1D9000450F82 /* Icon - Cool@3x.png */; };
-		ECB714C8246C1D9100450F82 /* Icon - Cool@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714BF246C1D9000450F82 /* Icon - Cool@2x.png */; };
-		ECB714C9246C1D9100450F82 /* Icon - Hot.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714C0246C1D9000450F82 /* Icon - Hot.png */; };
-		ECB714CA246C1D9100450F82 /* Icon - Cool.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714C1246C1D9000450F82 /* Icon - Cool.png */; };
-		ECB714CB246C1D9100450F82 /* Icon - Hot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714C2246C1D9100450F82 /* Icon - Hot@2x.png */; };
-		ECB714CC246C1D9100450F82 /* Icon - Cold@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714C3246C1D9100450F82 /* Icon - Cold@2x.png */; };
-		ECB714CD246C1D9100450F82 /* Icon - Cold@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB714C4246C1D9100450F82 /* Icon - Cold@3x.png */; };
 		ECB714D0246C203900450F82 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ECB714D2246C203900450F82 /* Localizable.strings */; };
 		ECB714D6246C232100450F82 /* String+localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB714D5246C232100450F82 /* String+localized.swift */; };
 		ECB714D9246C297900450F82 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ECB714DB246C297900450F82 /* InfoPlist.strings */; };
@@ -64,10 +62,9 @@
 			files = (
 				EC0958622469E8D200413BD0 /* Networking.framework in Embed Frameworks */,
 				EC0957792468C84400413BD0 /* Services.framework in Embed Frameworks */,
+				EC9C8CD8246D8AD500218746 /* GPS.framework in Embed Frameworks */,
 				EC09586A2469F2DA00413BD0 /* Models.framework in Embed Frameworks */,
 				EC0958652469E8D600413BD0 /* Storage.framework in Embed Frameworks */,
-				EC0957BE246963FB00413BD0 /* GPS.framework in Embed Frameworks */,
-				EC09585F2469E8CD00413BD0 /* GPS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +93,7 @@
 		EC9C8CC7246D80DC00218746 /* CoreLocationGPS+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreLocationGPS+Service.swift"; sourceTree = "<group>"; };
 		EC9C8CC9246D810B00218746 /* SQLiteStorage+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLiteStorage+Service.swift"; sourceTree = "<group>"; };
 		EC9C8CCB246D812500218746 /* URLSessionRequester+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionRequester+Service.swift"; sourceTree = "<group>"; };
+		EC9C8CD6246D8AD500218746 /* GPS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GPS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB3F44E2468821800431CA9 /* UIFont+italicSystemFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+italicSystemFont.swift"; sourceTree = "<group>"; };
 		ECB714BC246C1D9000450F82 /* Icon - Cold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon - Cold.png"; sourceTree = "<group>"; };
 		ECB714BD246C1D9000450F82 /* Icon - Hot@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon - Hot@3x.png"; sourceTree = "<group>"; };
@@ -133,10 +131,9 @@
 				EC0957782468C84400413BD0 /* Services.framework in Frameworks */,
 				AB02E609AB4B70182AE3E756 /* Pods_UserInterface.framework in Frameworks */,
 				EC0958642469E8D600413BD0 /* Storage.framework in Frameworks */,
-				EC0957BD246963FB00413BD0 /* GPS.framework in Frameworks */,
 				EC0958612469E8D200413BD0 /* Networking.framework in Frameworks */,
-				EC09585E2469E8CD00413BD0 /* GPS.framework in Frameworks */,
 				EC0958692469F2DA00413BD0 /* Models.framework in Frameworks */,
+				EC9C8CD7246D8AD500218746 /* GPS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +292,7 @@
 		EFCECF40FCECDBCCF72001EB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EC9C8CD6246D8AD500218746 /* GPS.framework */,
 				EC0958682469F2DA00413BD0 /* Models.framework */,
 				EC0958632469E8D600413BD0 /* Storage.framework */,
 				EC0958602469E8D200413BD0 /* Networking.framework */,
@@ -369,19 +367,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECB714C7246C1D9100450F82 /* Icon - Cool@3x.png in Resources */,
+				EC9C8CCD246D8A6600218746 /* Icon - Cold.png in Resources */,
+				EC9C8CCE246D8A6600218746 /* Icon - Cold@2x.png in Resources */,
+				EC9C8CCF246D8A6600218746 /* Icon - Cold@3x.png in Resources */,
+				EC9C8CD0246D8A6600218746 /* Icon - Cool.png in Resources */,
+				EC9C8CD1246D8A6600218746 /* Icon - Cool@2x.png in Resources */,
+				EC9C8CD2246D8A6600218746 /* Icon - Cool@3x.png in Resources */,
+				EC9C8CD3246D8A6600218746 /* Icon - Hot.png in Resources */,
+				EC9C8CD4246D8A6600218746 /* Icon - Hot@2x.png in Resources */,
+				EC9C8CD5246D8A6600218746 /* Icon - Hot@3x.png in Resources */,
 				ECB714D0246C203900450F82 /* Localizable.strings in Resources */,
-				ECB714C6246C1D9100450F82 /* Icon - Hot@3x.png in Resources */,
 				ECB714D9246C297900450F82 /* InfoPlist.strings in Resources */,
-				ECB714CD246C1D9100450F82 /* Icon - Cold@3x.png in Resources */,
 				ECFC68CE246874830060C8AF /* LaunchScreen.storyboard in Resources */,
 				ECFC68CB246874830060C8AF /* Assets.xcassets in Resources */,
-				ECB714C8246C1D9100450F82 /* Icon - Cool@2x.png in Resources */,
-				ECB714CC246C1D9100450F82 /* Icon - Cold@2x.png in Resources */,
-				ECB714CA246C1D9100450F82 /* Icon - Cool.png in Resources */,
-				ECB714C9246C1D9100450F82 /* Icon - Hot.png in Resources */,
-				ECB714CB246C1D9100450F82 /* Icon - Hot@2x.png in Resources */,
-				ECB714C5246C1D9100450F82 /* Icon - Cold.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
