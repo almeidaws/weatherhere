@@ -18,9 +18,9 @@ class LocalWeatherViewModel: Publisher {
     typealias Output = Weather
     typealias Failure = LocalWeatherViewModelError
     
-    private let publisher = PassthroughSubject<Weather, LocalWeatherViewModelError>()
+    private var publisher = PassthroughSubject<Weather, LocalWeatherViewModelError>()
     private var cancellables = Set<AnyCancellable>()
-    private let gps: GPS = Services.make(for: GPS.self)
+    private var gps: GPS = Services.make(for: GPS.self)
     private let storage: Storage = Services.make(for: Storage.self)
     private let networking: Requester = Services.make(for: Requester.self)
     
@@ -54,6 +54,7 @@ class LocalWeatherViewModel: Publisher {
         
         readFromCachePublisher
             .merge(with: readFromInternetPublisher)
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
@@ -61,6 +62,8 @@ class LocalWeatherViewModel: Publisher {
                 case .finished:
                     self.publisher.send(completion: .finished)
                 }
+                self.gps = Services.make(for: GPS.self)
+                self.publisher = PassthroughSubject<Weather, LocalWeatherViewModelError>()
             }) { weather in
                 self.publisher.send(weather)
             }.store(in: &cancellables)

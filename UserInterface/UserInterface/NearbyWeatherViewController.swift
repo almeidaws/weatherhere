@@ -45,7 +45,6 @@ class NearbyWeatherViewController: UIViewController, Drawable {
     
     private func startReceivingWeather() {
         viewModel
-            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
@@ -61,7 +60,7 @@ class NearbyWeatherViewController: UIViewController, Drawable {
                             self.alert(title: "We haven't access to your location.".localized, message: "Please, give access to this app and retry.".localized)
                         }
                     } else {
-                        self.alert(error) { self.startReceivingWeather() }
+                        self.alert(error, ok: {  }) { self.startReceivingWeather() }
                     }
                 case .finished:
                     self.nearbyWeatherView.isLoading = false

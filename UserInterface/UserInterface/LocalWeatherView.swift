@@ -14,6 +14,7 @@ class LocalWeatherView: UIView, Drawable {
     private weak var temperature: UILabel!
     private weak var location: UILabel!
     private weak var seeNearby: UIButton!
+    private weak var retry: UIButton!
     private weak var scrollView: UIScrollView!
     private weak var scrollViewContainer: UIView!
     private weak var background: UIImageView!
@@ -31,6 +32,14 @@ class LocalWeatherView: UIView, Drawable {
             }
         }
     }
+    var isInRetry: Bool {
+        get { retry.alpha > 0 }
+        set {
+            if newValue {
+                presentRetryButton()
+            }
+        }
+    }
     weak var delegate: LocalWeatherViewDelegate?
     var model: Model? {
         didSet {
@@ -41,21 +50,37 @@ class LocalWeatherView: UIView, Drawable {
     
     private func hidesActivityIndicator() {
         seeNearby.isUserInteractionEnabled = true
+        retry.isUserInteractionEnabled = false
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
             self.activityIndicator.stopAnimating()
             self.temperature.alpha = 1
             self.location.alpha = 1
             self.seeNearby.alpha = 1
+            self.retry.alpha = 0
+        }, completion: nil)
+    }
+    
+    private func presentRetryButton() {
+        seeNearby.isUserInteractionEnabled = false
+        retry.isUserInteractionEnabled = true
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
+            self.activityIndicator.stopAnimating()
+            self.temperature.alpha = 0
+            self.location.alpha = 0
+            self.seeNearby.alpha = 0
+            self.retry.alpha = 1
         }, completion: nil)
     }
     
     private func presentActivityIndicator() {
         seeNearby.isUserInteractionEnabled = false
+        retry.isUserInteractionEnabled = false
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
             self.activityIndicator.startAnimating()
             self.temperature.alpha = 0
             self.location.alpha = 0
             self.seeNearby.alpha = 0
+            self.retry.alpha = 0
         }, completion: nil)
     }
     
@@ -103,6 +128,10 @@ class LocalWeatherView: UIView, Drawable {
             make.top.greaterThanOrEqualTo(temperature.snp.bottom).offset(44).priority(.required)
         }
         
+        retry.snp.makeConstraints { make in
+            make.edges.equalTo(safeAreaLayoutGuide.snp.edges)
+        }
+        
         activityIndicator.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide.snp.edges)
         }
@@ -123,6 +152,11 @@ class LocalWeatherView: UIView, Drawable {
         seeNearby.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
         seeNearby.alpha = 0
         seeNearby.isUserInteractionEnabled = false
+        
+        retry.isUserInteractionEnabled = false
+        retry.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
+        retry.setTitleColor(.white, for: .normal)
+        retry.alpha = 0
         
         background.contentMode = .scaleAspectFill
         
@@ -161,6 +195,13 @@ class LocalWeatherView: UIView, Drawable {
         seeNearby.addTarget(self, action: #selector(handleSeeNearby(_:)), for: .touchUpInside)
         addSubview(seeNearby)
         
+        let retry = UIButton(type: .system)
+        retry.setTitle("Retry".localized, for: .normal)
+        self.retry = retry
+        retry.addTarget(self, action: #selector(handleRetry(_:)), for: .touchUpInside)
+        addSubview(retry)
+        
+        
         let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
@@ -170,6 +211,10 @@ class LocalWeatherView: UIView, Drawable {
     
     @objc private func handleSeeNearby(_ sender: UIButton) {
         delegate?.view(self, didTouch: .seeNearby)
+    }
+    
+    @objc private func handleRetry(_ sender: UIButton) {
+        delegate?.view(self, didTouch: .retry)
     }
     
     struct Model {
@@ -195,6 +240,7 @@ class LocalWeatherView: UIView, Drawable {
     
     enum Button: Int {
         case seeNearby
+        case retry
     }
 }
 

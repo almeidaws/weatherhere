@@ -25,7 +25,7 @@ class LocalWeatherViewController: UIViewController {
         super.viewDidLoad()
         localWeatherView.draw()
         localWeatherView.delegate = self
-        startReceivingWeather()
+        reinstallWeatherReceiver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,10 +48,9 @@ class LocalWeatherViewController: UIViewController {
         cancellables.removeAll()
     }
     
-    private func startReceivingWeather() {
+    private func reinstallWeatherReceiver() {
         localWeatherView.isLoading = true
         viewModel
-            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
@@ -60,14 +59,17 @@ class LocalWeatherViewController: UIViewController {
                         case let .authorizationDenied(flow) = error,
                         case let .authorizeManually(at: url) = flow {
                         if UIApplication.shared.canOpenURL(url) {
-                            self.alert(title:"Unable to fetch your current location".localized, message: "Would you like to reactivate it on settings?".localized, no: { }, yes: {
+                            self.alert(title:"Unable to fetch your current location".localized, message: "Would you like to reactivate it on settings?".localized, no: {
+                                self.localWeatherView.isInRetry = true
+                            }, yes: {
                                 UIApplication.shared.open(url)
                             })
                         } else {
                             self.alert(title: "We haven't access to your location.".localized, message: "Please, give access to this app and retry.".localized)
+                            self.localWeatherView.isInRetry = true
                         }
                     } else {
-                        self.alert(error) { self.startReceivingWeather() }
+                        self.alert(error, ok: { self.localWeatherView.isInRetry = true }) { self.reinstallWeatherReceiver() }
                     }
                 case .finished:
                     self.localWeatherView.isLoading = false
@@ -83,7 +85,13 @@ class LocalWeatherViewController: UIViewController {
 
 extension LocalWeatherViewController: LocalWeatherViewDelegate {
     func view(_ view: LocalWeatherView, didTouch button: LocalWeatherView.Button) {
-        coordinator.present(button, from: self)
+        switch button {
+        case .retry:
+            reinstallWeatherReceiver()
+            viewModel.startRetrievingWeather()
+        case .seeNearby:
+            coordinator.present(button, from: self)
+        }
     }
 }
 

@@ -23,8 +23,8 @@ extension UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func alert(_ error: Error, retry: @escaping () -> Void) {
-        let ok = UIAlertAction(title: "Ok".localized, style: .default)
+    func alert(_ error: Error, ok: @escaping () -> Void, retry: @escaping () -> Void) {
+        let ok = UIAlertAction(title: "Ok".localized, style: .default) { _ in ok() }
         let retry = UIAlertAction(title: "Retry".localized, style: .default) { _ in retry() }
         let alert = UIAlertController(title: "An error has occurred...".localized, message: "\(error)", preferredStyle: .alert)
         alert.addAction(ok)
