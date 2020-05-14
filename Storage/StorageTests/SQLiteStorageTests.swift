@@ -9,14 +9,16 @@
 import XCTest
 import Models
 import Combine
+import Services
 @testable import Storage
 
 fileprivate let location = Location(latitude: -15.805034, longitude: -48.021302)
 fileprivate let testWeathers = [
-    Weather(place: "Brasilia", location: .init(latitude: -15.78, longitude: -47.93), temperature: .init(fahrenheit: 293.15), sky: "Clear"),
-    Weather(place: "Guará", location: .init(latitude: -15.83, longitude: -47.9), temperature: .init(fahrenheit: 293.15), sky: "Clear"),
-    Weather(place: "Gama", location: .init(latitude: -15.95, longitude: -48.08), temperature: .init(fahrenheit: 293.15), sky: "Clear"),
+    Weather(city: "Brasilia", country: "BR", location: .init(latitude: -15.78, longitude: -47.93), temperature: .init(kelvin: 293.15), sky: "clear sky"),
+    Weather(city: "Guará", country: "BR", location: .init(latitude: -15.83, longitude: -47.9), temperature: .init(kelvin: 293.15), sky: "clear sky"),
+    Weather(city: "Gama", country: "BR", location: .init(latitude: -15.95, longitude: -48.08), temperature: .init(kelvin: 293.15), sky: "clear sky"),
     ].sorted(distanceTo: location)
+extension SQLiteStorage: Service { }
 
 class SQLiteStorageTests: XCTestCase {
     

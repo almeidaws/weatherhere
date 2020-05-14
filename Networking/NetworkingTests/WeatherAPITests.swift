@@ -13,11 +13,11 @@ import Services
 @testable import Networking
 
 fileprivate let location = Location(latitude: -15.805034, longitude: -48.021302)
-fileprivate let liveWeather = Weather(place: "Brasília", location: .init(latitude: -15.81, longitude:  -48.02), temperature: .init(fahrenheit: 294.15), sky: "Clear")
+fileprivate let liveWeather = Weather(city: "Brasília", country: "BR", location: .init(latitude: -15.81, longitude:  -48.02), temperature: .init(kelvin: 294.15), sky: "clear sky")
 fileprivate let findWeathers = [
-    Weather(place: "Brasilia", location: .init(latitude: -15.78, longitude: -47.93), temperature: .init(fahrenheit: 293.15), sky: "Clear"),
-    Weather(place: "Guará", location: .init(latitude: -15.83, longitude: -47.9), temperature: .init(fahrenheit: 293.15), sky: "Clear"),
-    Weather(place: "Gama", location: .init(latitude: -15.95, longitude: -48.08), temperature: .init(fahrenheit: 293.15), sky: "Clear"),
+    Weather(city: "Brasilia", country: "BR", location: .init(latitude: -15.78, longitude: -47.93), temperature: .init(kelvin: 293.15), sky: "clear sky"),
+    Weather(city: "Guará", country: "BR", location: .init(latitude: -15.83, longitude: -47.9), temperature: .init(kelvin: 293.15), sky: "clear sky"),
+    Weather(city: "Gama", country: "BR", location: .init(latitude: -15.95, longitude: -48.08), temperature: .init(kelvin: 293.15), sky: "clear sky"),
     ].sorted(distanceTo: location)
 
 class WeatherAPITests: XCTestCase {
@@ -30,7 +30,7 @@ class WeatherAPITests: XCTestCase {
         let requester: Requester = Services.make(for: Requester.self)
         
         let expectation = self.expectation(description: "Wait response")
-        _ = requester.weather(at: location, bundle).sink(receiveCompletion: { completion in }) { weather in
+        _ = requester.weather(at: location, "en", bundle).sink(receiveCompletion: { completion in }) { weather in
             assert(liveWeather == weather, "Read weather aren't equal to the expected.")
             expectation.fulfill()
         }
@@ -46,7 +46,7 @@ class WeatherAPITests: XCTestCase {
         let requester: Requester = Services.make(for: Requester.self)
         
         let expectation = self.expectation(description: "Wait response")
-        _ = requester.weatherNearby(at: location, bundle).sink(receiveCompletion: { completion in }) { weathers in
+        _ = requester.weatherNearby(at: location, "en", bundle).sink(receiveCompletion: { completion in }) { weathers in
             assert(findWeathers == weathers, "Read weathers aren't equal to the expected.")
             expectation.fulfill()
         }
