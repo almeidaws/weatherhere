@@ -33,7 +33,7 @@ class NearbyWeatherViewModel: Publisher {
         .flatMap { location in
             self.storage.read()
             .mapError { error in LocalWeatherViewModelError.storage(error) }
-            .map { weathers in weathers.sorted(distanceTo: location) }
+                .map { weathers in weathers.sorted { $0.temperature.celsiusValue < $1.temperature.celsiusValue } }
         }.eraseToAnyPublisher()
         
         let readFromInternetPublisher = gpsPublisher
