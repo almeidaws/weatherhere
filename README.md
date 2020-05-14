@@ -12,7 +12,7 @@
 
 Code regression is an important aspect of an application. All the tests are checked with [Travis CI](https://travis-ci.org/). You can check build status clicking on the following badge:
 
-![Build Status](https://travis-ci.org/almeidaws/weatherhere.svg?branch=master)
+[![Build Status](https://travis-ci.org/almeidaws/weatherhere.svg?branch=master)](https://travis-ci.org/almeidaws/weatherhere)
 
 ## Tasks management
 
